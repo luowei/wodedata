@@ -2,8 +2,6 @@ package com.wodedata.service;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +11,7 @@ import com.wodedata.domin.User;
 import com.wodedata.repository.FocusRepo;
 import com.wodedata.repository.NodeRepo;
 import com.wodedata.repository.UserRepo;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class FocusServ {

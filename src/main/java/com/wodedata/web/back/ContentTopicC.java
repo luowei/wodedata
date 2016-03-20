@@ -2,6 +2,7 @@ package com.wodedata.web.back;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.wodedata.domin.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ import com.wodedata.service.NodeServ;
 import com.wodedata.service.SectionServ;
 import com.wodedata.service.TopicServ;
 import com.wodedata.service.UserServ;
+
+import java.util.List;
 
 @Service
 @RequestMapping("/back/content/topics")
@@ -70,7 +73,9 @@ public class ContentTopicC {
 			Model model){
 		Topic topic=topicServ.getOne(id);
 		model.addAttribute("topic",topic);
-		model.addAttribute("sections",sectionServ.getAll());
+
+		List<Section> sections = sectionServ.getAll();
+		model.addAttribute("sections",sections);
 		return "/BACK/content/topics/edit";
 	}
 	

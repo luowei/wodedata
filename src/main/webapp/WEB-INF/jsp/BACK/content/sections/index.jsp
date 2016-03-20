@@ -5,6 +5,7 @@
 	<div id="wrapper">
 		<%@ include file="../../common/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 243px;">
+
 			<div class="modal  fade" id="delete" tabindex="-1"
 				role="dialog">
 				<div class="modal-dialog modal-danger modal-sm" role="document">
@@ -18,11 +19,13 @@
 						<div class="modal-body">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">取消</button>
-							<button type="button" class="btn btn-danger">删除</button>
+							<%--<button type="button" class="btn btn-danger btn-ok">删除</button>--%>
+							<a class="btn btn-danger btn-ok">删除</a>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 30px">
 					<div class="panel panel-info">
@@ -67,7 +70,7 @@
 													<td>${node.section.id}</td>
 													<td>
 														<a class="btn btn-info btn-xs" href="${x}/back/content/sections/${node.id}/edit" >编辑</a>
-														<button class="btn btn-danger btn-xs" data-toggle="modal"
+														<button class="btn btn-danger btn-xs" data-toggle="modal" data-href="${x}/back/content/sections/${node.id}/delete"
 															data-target="#delete">删除</button>
 													</td>
 												</tr>
@@ -95,6 +98,13 @@
 	<script src="${x}/js/metisMenu.min.js"></script>
 
 	<script src="${x}/js/sb-admin-2.js"></script>
+
+	<script type="application/javascript">
+		$('#delete').on('show.bs.modal', function(e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+		});
+
+	</script>
 
 </body>
 </html>

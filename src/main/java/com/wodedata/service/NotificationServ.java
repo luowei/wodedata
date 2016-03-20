@@ -2,7 +2,6 @@ package com.wodedata.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.wodedata.domin.Notification;
 import com.wodedata.domin.User;
 import com.wodedata.repository.NotificationRepo;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NotificationServ {

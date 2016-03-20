@@ -2,8 +2,6 @@ package com.wodedata.service;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +17,7 @@ import com.wodedata.repository.NodeRepo;
 import com.wodedata.repository.SectionRepo;
 import com.wodedata.repository.TopicRepo;
 import com.wodedata.repository.UserRepo;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TopicServ {

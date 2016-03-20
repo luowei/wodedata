@@ -1,6 +1,5 @@
 package service;
 
-import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +16,8 @@ import com.wodedata.repository.TopicRepo;
 import com.wodedata.repository.UserRepo;
 import com.wodedata.service.CommentServ;
 import com.wodedata.service.TopicServ;
+import org.springframework.transaction.annotation.Transactional;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class TestComment {

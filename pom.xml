@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>xyz.wodedata</groupId>
 	<artifactId>wodedata</artifactId>
@@ -7,7 +7,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>com.wodedata Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<spring.version>4.2.0.RELEASE</spring.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
@@ -22,7 +21,6 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- jsp&servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -149,7 +147,6 @@
 			<artifactId>druid</artifactId>
 			<version>0.2.19</version>
 		</dependency>
-
 		<!-- EHCACHE begin -->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
@@ -172,8 +169,6 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.6</version>
 		</dependency>
-
-
 		<!-- AOP -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -185,12 +180,17 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.6.9</version>
 		</dependency>
-
 		<!-- fix hibernate no session error -->
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.16.1-GA</version>
+		</dependency>
+		<!--apache common codec-->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
 		</dependency>
 		<!-- file upload -->
 		<dependency>
