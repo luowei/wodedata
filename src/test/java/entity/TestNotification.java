@@ -1,15 +1,13 @@
 package entity;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import xyz.springabc.domin.User;
-import xyz.springabc.repository.NotificationRepo;
-import xyz.springabc.repository.UserRepo;
+import com.wodedata.domin.User;
+import com.wodedata.repository.NotificationRepo;
+import com.wodedata.repository.UserRepo;
 
 import org.junit.runner.RunWith;
 

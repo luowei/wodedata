@@ -15,7 +15,7 @@
 
 	<description>Spring-abc</description>
 
-	<context:component-scan base-package="xyz.springabc">
+	<context:component-scan base-package="com.wodedata">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -64,7 +64,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
-		<property name="packagesToScan" value="xyz.springabc.domin" />
+		<property name="packagesToScan" value="com.wodedata.domin" />
 		<property name="jpaDialect">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 		</property>
@@ -102,7 +102,7 @@
 		<property name="filters" value="${jdbc.pool.filters}" />
 	</bean>
 
-	<jpa:repositories base-package="xyz.springabc.repository"
+	<jpa:repositories base-package="com.wodedata.repository"
 		transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="entityManagerFactory" />
 
@@ -111,7 +111,7 @@
 	<aop:aspectj-autoproxy />
 
 	<!-- 邮件发送器 -->
-	<bean id="myMailSender" class="xyz.springabc.web.helper.MyMailSender">
+	<bean id="myMailSender" class="com.wodedata.web.helper.MyMailSender">
 		<constructor-arg index="0">
 			<value>${email.host}</value>
 		</constructor-arg>
@@ -127,7 +127,7 @@
 	</bean>
 	<!-- qiniu -->
 	<bean id="uploadManager" class="com.qiniu.storage.UploadManager"></bean>
-	<bean id="qiniu" class="xyz.springabc.web.helper.Qiniu">
+	<bean id="qiniu" class="com.wodedata.web.helper.Qiniu">
 		<constructor-arg index="0">
 			<value>${qiniu.accessKey}</value>
 		</constructor-arg>

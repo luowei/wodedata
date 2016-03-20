@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +11,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javafx.print.PageRange;
-import xyz.springabc.domin.Comment;
-import xyz.springabc.domin.Topic;
-import xyz.springabc.domin.User;
-import xyz.springabc.repository.TopicRepo;
-import xyz.springabc.repository.UserRepo;
-import xyz.springabc.service.TopicServ;
+import com.wodedata.domin.Topic;
+import com.wodedata.domin.User;
+import com.wodedata.repository.TopicRepo;
+import com.wodedata.repository.UserRepo;
+import com.wodedata.service.TopicServ;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")

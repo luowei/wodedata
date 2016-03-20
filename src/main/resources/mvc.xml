@@ -12,7 +12,7 @@
    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 	
 	<description>Spring MVC Configuration</description>
-	<context:component-scan base-package="xyz.springabc.web" />
+	<context:component-scan base-package="com.wodedata.web" />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/js/**" location="/js/"
 		cache-period="31556926" />
@@ -26,7 +26,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="xyz.springabc.web.interceptor.GlobalInte"></bean>
+			<bean class="com.wodedata.web.interceptor.GlobalInte"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/account/setting" />
@@ -41,11 +41,11 @@
 			<mvc:mapping path="/users/follow" />
 			<mvc:mapping path="/users/unfollow" />
 			<mvc:mapping path="/!focused"/>
-			<bean class="xyz.springabc.web.interceptor.AuthenInte" />
+			<bean class="com.wodedata.web.interceptor.AuthenInte" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/back/**"/>
-			<bean class="xyz.springabc.web.interceptor.AdminInte" />
+			<bean class="com.wodedata.web.interceptor.AdminInte" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 

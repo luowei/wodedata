@@ -1,16 +1,14 @@
 package service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import xyz.springabc.domin.User;
-import xyz.springabc.repository.UserRepo;
-import xyz.springabc.service.NotificationServ;
+import com.wodedata.domin.User;
+import com.wodedata.repository.UserRepo;
+import com.wodedata.service.NotificationServ;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class NotificationTest {

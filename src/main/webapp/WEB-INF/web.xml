@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>springabc</display-name>
+	<display-name>wodedata</display-name>
 	<!-- 同时加载多个spring配置文件可用 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -16,10 +16,10 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>xyz.springabc.web.listener.StartUpListener</listener-class>
+		<listener-class>com.wodedata.web.listener.StartUpListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>xyz.springabc.web.listener.SessionListener</listener-class>
+		<listener-class>com.wodedata.web.listener.SessionListener</listener-class>
 	</listener>
 
 	<!-- Spring Servlet,由于把bean全部交给了SpringJap，所以Spring-mvc里面现在为空 -->

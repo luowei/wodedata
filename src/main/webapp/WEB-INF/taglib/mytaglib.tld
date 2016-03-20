@@ -12,7 +12,7 @@
         <!-- 定义标签名 -->
         <name>Flashback</name>
         <!-- 定义标签处理类 -->
-        <tag-class>xyz.springabc.web.taglib.Flashback</tag-class>
+        <tag-class>com.wodedata.web.taglib.Flashback</tag-class>
         <!-- 定义标签体为空 -->
         <body-content>empty</body-content>
         <attribute>

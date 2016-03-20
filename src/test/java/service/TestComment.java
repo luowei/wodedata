@@ -1,7 +1,5 @@
 package service;
 
-import static org.junit.Assert.*;
-
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -11,16 +9,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import antlr.collections.List;
-import xyz.springabc.domin.Comment;
-import xyz.springabc.domin.Topic;
-import xyz.springabc.domin.User;
-import xyz.springabc.error.ValidateError;
-import xyz.springabc.repository.CommentRepo;
-import xyz.springabc.repository.TopicRepo;
-import xyz.springabc.repository.UserRepo;
-import xyz.springabc.service.CommentServ;
-import xyz.springabc.service.TopicServ;
+import com.wodedata.domin.Comment;
+import com.wodedata.domin.Topic;
+import com.wodedata.domin.User;
+import com.wodedata.repository.CommentRepo;
+import com.wodedata.repository.TopicRepo;
+import com.wodedata.repository.UserRepo;
+import com.wodedata.service.CommentServ;
+import com.wodedata.service.TopicServ;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class TestComment {

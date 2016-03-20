@@ -1,10 +1,8 @@
 package service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-import xyz.springabc.service.support.EncryptUtil;
+import com.wodedata.service.support.EncryptUtil;
 
 public class TestEncrypt {
 
