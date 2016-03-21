@@ -20,6 +20,7 @@ import com.wodedata.service.SectionServ;
 import com.wodedata.service.TopicServ;
 import com.wodedata.service.UserServ;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -75,7 +76,6 @@ public class ContentTopicC {
 		model.addAttribute("topic",topic);
 
 		List<Section> sections = sectionServ.getAll();
-//		sections.forEach(Section::getNodes);
 		model.addAttribute("sections",sections);
 		return "/BACK/content/topics/edit";
 	}

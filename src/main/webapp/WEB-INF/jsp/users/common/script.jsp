@@ -28,7 +28,7 @@ $("#btn-follow").on("click",function (e){
 				}
 			});
 		}
-	})
+	});
 	return true;
 })
 </script>

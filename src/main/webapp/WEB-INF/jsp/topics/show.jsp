@@ -158,7 +158,7 @@
 	$(function (){
 		var originHTML=marked($("#topic-content").text());
 		$("#topic-content").html(originHTML);
-	})
+	});
 	$("#btn-collect").on("click",function (e){
 		var topicURL="${x}/topics/${topic.id}/";
 		$.getJSON(topicURL+"isCollected",function (msg){
@@ -175,7 +175,7 @@
 					}
 				})
 			}
-		})
+		});
 		return true;
 	});
 	$(".fa-reply").on("click",function (e){
@@ -197,7 +197,7 @@
 				}
 			});
 		});
-	})
+	});
 	$(".fa-thumbs-o-up").on("click",function(e){
 		var likeBtn=$(this);
 		var url=likeBtn.attr("data-url");
@@ -213,7 +213,7 @@
 				divComment.removeClass("list-group-item-info");
 			}
 		});
-	})
+	});
 	$(".btn-comment").on('click',function (e){
 		var data=$("#form-comment").serialize();
 		var url="${x}/comments/create";

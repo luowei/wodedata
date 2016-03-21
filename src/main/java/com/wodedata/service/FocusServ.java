@@ -26,11 +26,7 @@ public class FocusServ {
 	private UserRepo userRepo;
 	
 	public boolean isFocus(int nodeId,int userId){
-		if(focusRepo.findByNodeIdAndUserId(nodeId, userId)==null){
-			return false;
-		}else{
-			return true;
-		}
+		return focusRepo.findByNodeIdAndUserId(nodeId, userId) != null;
 	}
 	
 	@Transactional

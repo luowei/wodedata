@@ -23,7 +23,7 @@ public class TestFollow {
 	@Transactional
 	@Test
 	public void test() {
-		String username=followSer.getFollowingByUser(userRepo.findOne(new Integer(3)), 1).getContent().get(0).getUserByFollowingId().getUsername();
+		String username=followSer.getFollowingByUser(userRepo.findOne(3), 1).getContent().get(0).getUserByFollowingId().getUsername();
 		System.out.println(username);
 	}
 	
@@ -36,8 +36,8 @@ public class TestFollow {
 //	
 	@Test
 	public void unfollow(){
-		User self=userRepo.findOne(new Integer(1));
-		User other=userRepo.findOne(new Integer(3));
+		User self=userRepo.findOne(1);
+		User other=userRepo.findOne(3);
 		followSer.unfollow(self, other);
 	}
 

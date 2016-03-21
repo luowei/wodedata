@@ -17,11 +17,7 @@ public class AdminInte implements HandlerInterceptor{
 		if(user==null){
 			return false;
 		}else{
-			if(!user.getRole().equals(UserServ.ROLE_ADMIIN)){
-				return false;
-			}else{
-				return true;
-			}
+			return user.getRole().equals(UserServ.ROLE_ADMIIN);
 		}
 	}
 

@@ -19,17 +19,18 @@ public class TestNode {
 	@Test
 	public void test() {
 		List<Node> nodes=nodeServ.getNodeBySection("技术");
-		for(Node n:nodes){
-			System.out.println(n.getName());
-		}
+//		for(Node n:nodes){
+//			System.out.println(n.getName());
+//		}
+		nodes.forEach(node -> {
+			System.out.println(node.getName());
+		});
 	}
 	
 	@Test
 	public void testNames() {
 		List<String> nodes=nodeServ.getNodeNameBySectionName("技术");
-		for(String n:nodes){
-			System.out.println(n);
-		}
+		nodes.forEach(System.out::println);
 	}
 
 }

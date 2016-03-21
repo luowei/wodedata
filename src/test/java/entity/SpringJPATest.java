@@ -52,7 +52,7 @@ public class SpringJPATest {
 	public void update(){
 		EntityManager e=entityManagerFactory.createEntityManager();
 		e.getTransaction().begin();
-		User user = (User)e.find(User.class, new Integer(1));
+		User user = e.find(User.class, new Integer(1));
 		user.setAvatar("6666");
 		user.setNick("~~~~~~~~~~~~~~~~~~~~~`");
 		e.persist(user);
@@ -64,7 +64,7 @@ public class SpringJPATest {
 		EntityManager e=entityManagerFactory.createEntityManager();
 		e.getTransaction().begin();
 		Topic t=e.find(Topic.class, new Integer(1));
-		User user = (User)e.find(User.class, new Integer(1));
+		User user = e.find(User.class, new Integer(1));
 		user.setAvatar("yes");
 		e.persist(t);
 		e.getTransaction().commit();

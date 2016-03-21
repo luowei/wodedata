@@ -125,7 +125,7 @@
 		Dropzone.options.dropzone = {
 				  autoProcessQueue: false,
 				  init: function() {
-				    var submitButton = document.querySelector("#btn-upload")
+				    var submitButton = document.querySelector("#btn-upload");
 				        dropzone = this; // closure
 
 				    submitButton.addEventListener("click", function() {

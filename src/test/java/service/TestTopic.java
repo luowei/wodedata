@@ -1,9 +1,10 @@
 package service;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
+import com.wodedata.domin.Topic;
+import com.wodedata.domin.User;
+import com.wodedata.repository.TopicRepo;
+import com.wodedata.repository.UserRepo;
+import com.wodedata.service.TopicServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wodedata.domin.Topic;
-import com.wodedata.domin.User;
-import com.wodedata.repository.TopicRepo;
-import com.wodedata.repository.UserRepo;
-import com.wodedata.service.TopicServ;
+import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
@@ -35,8 +34,8 @@ public class TestTopic {
 	
 	@Test
 	public void get(){
-		User user=userRepo.findOne(new Integer(1));
-		Topic topic=topicRepo.findOne(new Integer(1));
+		User user=userRepo.findOne(1);
+		Topic topic=topicRepo.findOne(1);
 		String username=topic.getUser().getUsername();
 		assertNotNull(username);
 		System.out.println(username);
@@ -46,7 +45,7 @@ public class TestTopic {
 	
 	@Test
 	public void getFollow(){
-		User user=userRepo.findOne(new Integer(1));
+		User user=userRepo.findOne(1);
 		t.getByUser(user, 1, 10);
 	}
 	

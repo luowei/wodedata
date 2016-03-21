@@ -70,7 +70,7 @@
 				DIV.parent().parent().addClass("has-error");}
 			});
 			DIV.parent().children(".with-errors").html("");
-		})
+		});
 		$("#username").on("blur",function (e){
 			var username=$(this).val();
 			var DIV=$(this);

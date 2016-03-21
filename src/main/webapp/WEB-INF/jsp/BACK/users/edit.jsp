@@ -104,7 +104,7 @@
 			nickDIV.parent().parent().addClass("has-error");
 			nickDIV.parent().children(".with-errors").show();}
 		});
-	})
+	});
 	$("#nick").on("focus",function (e){
 						$(this).parent().parent().removeClass("has-error");
 						$(this).parent().children(".with-errors").hide();

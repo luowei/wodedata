@@ -60,7 +60,7 @@ $("#username").on("blur",function (e){
 		usernameDIV.parent().parent().addClass("has-error");
 		usernameDIV.parent().children(".with-errors").show();}
 	});
-})
+});
 $("#username").on("focus",function (e){
 					$(this).parent().parent().removeClass("has-error");
 					$(this).parent().children(".with-errors").hide();

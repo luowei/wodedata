@@ -122,7 +122,7 @@
 					to:$("#to").val(),
 					title:$("#title").val(),
 					content:marked($("#content").val())
-			}
+			};
 			$.post(url,data,function (msg){
 				$btn.button('reset');
 				if(msg==true){
@@ -136,7 +136,7 @@
 		Dropzone.options.dropzone = {
 				  autoProcessQueue: false,
 				  init: function() {
-				    var submitButton = document.querySelector("#btn-upload")
+				    var submitButton = document.querySelector("#btn-upload");
 				        dropzone = this; // closure
 
 				    submitButton.addEventListener("click", function() {

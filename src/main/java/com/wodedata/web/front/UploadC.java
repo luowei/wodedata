@@ -30,5 +30,5 @@ public class UploadC {
 	@ResponseBody
 	public QiniuResponse uploadTest(MultipartFile file) throws Exception {
 		return uploadFileServ.upload(file);
-	};
+	}
 }

@@ -69,12 +69,12 @@
 				timeLimit=60;
 				$("#btn-send").html("发送验证码").removeClass("disabled");
 				clearInterval(intervalID);//停止倒计时
-				return;
+
 			}else{
 				timeLimit--;
 				$("#btn-send").html("等待"+timeLimit+"秒");
 			}
-		}
+		};
 		var intervalID=setInterval(decrese,1000);//倒计时
 	});
 	$("#btn-reset").on("click",function (e){

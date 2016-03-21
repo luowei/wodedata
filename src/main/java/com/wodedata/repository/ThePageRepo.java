@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import com.wodedata.domin.ThePage;
 
 public interface ThePageRepo extends JpaRepository<ThePage, Integer>{
-	public ThePage findOneByUrl(String url);
+	ThePage findOneByUrl(String url);
 	
 	@Modifying
 	@Query(value="update page set page.view_count=page.view_count+1 where page.id=?1",
 	nativeQuery=true)
-	public void plusViewCount(int id);
+	void plusViewCount(int id);
 }
