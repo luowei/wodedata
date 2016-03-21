@@ -75,6 +75,7 @@ public class ContentTopicC {
 		model.addAttribute("topic",topic);
 
 		List<Section> sections = sectionServ.getAll();
+//		sections.forEach(Section::getNodes);
 		model.addAttribute("sections",sections);
 		return "/BACK/content/topics/edit";
 	}

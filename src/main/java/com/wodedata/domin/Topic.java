@@ -37,7 +37,7 @@ public class Topic implements java.io.Serializable {
 	private Date lastCommentAt;
 	private Integer lastCommentUserId;
 	
-	@Transient
+//	@Transient
 	private User LastCommentUser;
 	
 	private Long likeCount=0L;
@@ -155,6 +155,7 @@ public class Topic implements java.io.Serializable {
 		this.lastCommentUserId = lastCommentUserId;
 	}
 
+	@Transient
 	public User getLastCommentUser() {
 		return LastCommentUser;
 	}

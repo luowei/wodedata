@@ -8,35 +8,69 @@
 	<name>com.wodedata Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<spring.version>4.2.0.RELEASE</spring.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
-		<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
-		<hibernate-search.version>4.2.0.Final</hibernate-search.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jsp-api.version>2.2</jsp-api.version>
+		<jstl.version>1.2</jstl.version>
+
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
+		<spring-data-commons.version>1.11.4.RELEASE</spring-data-commons.version>
+
+		<aspectjrt.version>1.8.9</aspectjrt.version>
+
+		<!--<hibernate.version>4.3.5.Final</hibernate.version>-->
+		<!--<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>-->
+
+		<hibernate.version>5.1.0.Final</hibernate.version>
+		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+
 		<ehcache.version>2.6.6</ehcache.version>
+		<ehcache-web.version>2.0.4</ehcache-web.version>
+
+		<javassist.version>3.16.1-GA</javassist.version>
+		<jackson-core-lgpl.version>1.8.8</jackson-core-lgpl.version>
+		<jackson-databind.version>2.5.1</jackson-databind.version>
+
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-codec.version>1.10</commons-codec.version>
+
+
+		<log4j.version>${jstl.version}.14</log4j.version>
+		<slf4j-log4j12.version>1.7.6</slf4j-log4j12.version>
+
+		<javax.mail.version>1.5.4</javax.mail.version>
+
+		<mysql-connector-java.version>5.1.28</mysql-connector-java.version>
+
+		<druid.version>0.2.19</druid.version>
+		<qiniu-java-sdk.version>7.0.0</qiniu-java-sdk.version>
+
+		<junit.version>4.11</junit.version>
+
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- jsp&servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
+			<version>${jsp-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 		<!-- spring -->
 		<dependency>
@@ -92,12 +126,12 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.6.2.RELEASE</version>
+			<version>${spring-data-jpa.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>1.8.2.RELEASE</version>
+			<version>${spring-data-commons.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -130,22 +164,17 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
-			<version>${hibernate-search.version}</version>
-		</dependency>
 		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.28</version>
+			<version>${mysql-connector-java.version}</version>
 		</dependency>
 		<!-- connection pool -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>0.2.19</version>
+			<version>${druid.version}</version>
 		</dependency>
 		<!-- EHCACHE begin -->
 		<dependency>
@@ -156,78 +185,88 @@
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-web</artifactId>
-			<version>2.0.4</version>
+			<version>${ehcache-web.version}</version>
 		</dependency>
 		<!-- log -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.6</version>
+			<version>${slf4j-log4j12.version}</version>
 		</dependency>
 		<!-- AOP -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.7.0</version>
+			<version>${aspectjrt.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.6.9</version>
+			<version>${aspectjrt.version}</version>
 		</dependency>
 		<!-- fix hibernate no session error -->
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.16.1-GA</version>
+			<version>${javassist.version}</version>
 		</dependency>
 		<!--apache common codec-->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.10</version>
+			<version>${commons-codec.version}</version>
 		</dependency>
 		<!-- file upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.1</version>
+			<version>${commons-fileupload.version}</version>
 		</dependency>
 		<!-- json -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-lgpl</artifactId>
-			<version>1.9.0</version>
+			<version>${jackson-core-lgpl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-lgpl</artifactId>
-			<version>1.9.0</version>
+			<version>${jackson-core-lgpl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.5.1</version>
+			<version>${jackson-databind.version}</version>
 		</dependency>
 		<!-- mail -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
-			<version>1.5.4</version>
+			<version>${javax.mail.version}</version>
 		</dependency>
 		<!-- qiniu -->
 		<dependency>
 			<groupId>com.qiniu</groupId>
 			<artifactId>qiniu-java-sdk</artifactId>
-			<version>7.0.0</version>
+			<version>${qiniu-java-sdk.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
 		<finalName>wodedata</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
