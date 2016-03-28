@@ -4,6 +4,7 @@ package com.wodedata.web.front;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wodedata.web.helper.ReadData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -114,6 +115,7 @@ public class TopicC {
 	 */
 	@RequestMapping("/create")
 	public String newPage(Model model) {
+		model.addAttribute("topicTemplate", ReadData.readTipsFromFile("TopicTemplate.md"));
 		model.addAttribute("sections", sectionServ.getAll());
 		return "/topics/create";
 	}

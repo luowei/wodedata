@@ -76,7 +76,8 @@
 						class="fa arrow"></span> </a>
 					<ul class="nav nav-second-level">
 						<li><a href="${back}/content/topics">话题</a></li>
-						<li><a href="${back}/content/sections">分类和节点</a></li>
+						<li><a href="${back}/content/nodes">节点</a></li>
+						<li><a href="${back}/content/sections">分类</a></li>
 						<li><a href="${back}/content/comments">评论</a></li>
 						<li><a href="${back}/content/pages">页面</a></li>
 					</ul> <!-- /.nav-second-level --></li>

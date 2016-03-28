@@ -32,9 +32,6 @@ public class ContentSectionsC {
 	@RequestMapping("")
 	public String index(@RequestParam(value="p",defaultValue="1") int p,
 			Model model){
-		Page<Node> nodePage=nodeServ.getNode(p);
-		model.addAttribute("nodes",nodePage.getContent());
-		model.addAttribute("page",nodePage);
 		model.addAttribute("sections",sectionServ.getAll());
 		return "/BACK/content/sections/index";
 	}
@@ -50,62 +47,46 @@ public class ContentSectionsC {
 	@RequestMapping("/{id}/edit")
 	public String edit(@PathVariable("id") int id,
 			Model model){
-		Node node=nodeServ.getOneNode(id);
-		List<Section> sections=sectionServ.getAll();
-		model.addAttribute("node",node);
-		model.addAttribute("sections",sections);
+		Section section=sectionServ.getOneNode(id);
+		model.addAttribute("section",section);
+
 		return "/BACK/content/sections/edit";
 	}
 	
 	
 	@RequestMapping("/new")
 	public String newNode(Model model){
-		List<Section> sections=sectionServ.getAll();
-		model.addAttribute("sections",sections);
 		return "/BACK/content/sections/new";
 	}
 	
 	@RequestMapping(value="/save")
-	public String save(Node node,
-			String sectionName,
-			String newSectionName,
+	public String save(String sectionName,
 			RedirectAttributes attributes){
-		Section section=sectionServ.getOne(newSectionName);
-		if(section==null||newSectionName!=""){
+		Section section=sectionServ.getOne(sectionName);
+		if(section==null||sectionName.equals("")){
 			section=new Section();
-			section.setName(newSectionName);
+			section.setName(sectionName);
 			sectionServ.save(section);
-		}else{
-			section=sectionServ.getOne(sectionName);
 		}
-		node.setSection(section);
-		nodeServ.save(node);
+
 		List<Section> sections=sectionServ.getAll();
-		attributes.addFlashAttribute("node",node);
 		attributes.addFlashAttribute("sections",sections);
 		attributes.addFlashAttribute("msg","已保存");
-		return "redirect:/back/content/sections/"+node.getId()+"/edit";
+		return "redirect:/back/content/sections";
 	}
 	
 	@RequestMapping(value="/update")
-	public String update(Node node,
-			String sectionName,
-			String newSectionName,
+	public String update(String sectionName,
 			RedirectAttributes attributes){
-		Section section=sectionServ.getOne(newSectionName);
-		if(section==null||newSectionName!=""){
+		Section section=sectionServ.getOne(sectionName);
+		if(section==null||sectionName.equals("")){
 			section=new Section();
-			section.setName(newSectionName);
+			section.setName(sectionName);
 			sectionServ.save(section);
-		}else{
-			section=sectionServ.getOne(sectionName);
 		}
-		node.setSection(section);
-		nodeServ.update(node);
 		List<Section> sections=sectionServ.getAll();
-		attributes.addFlashAttribute("node",node);
 		attributes.addFlashAttribute("sections",sections);
 		attributes.addFlashAttribute("msg","已保存");
-		return "redirect:/back/content/sections/"+node.getId()+"/edit";
+		return "redirect:/back/content/sections";
 	}
 }

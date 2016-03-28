@@ -10,12 +10,9 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<div class="btu-group ">
-							<a href="${x}/"
-								class="btn btn-xs <c:if test="${'all' eq sectionName }">btn-info</c:if>">全部</a>
-							<a href="${x}/!hot"
-								class="btn btn-xs <c:if test="${'hot' eq sectionName }">btn-info</c:if>">热门</a>
-							<a href="${x}/!focused"
-								class="btn btn-xs <c:if test="${'focused' eq sectionName }">btn-info</c:if>">关注</a>
+							<a href="${x}/" class="btn btn-xs <c:if test="${'all' eq sectionName }">btn-info</c:if>">全部</a>
+							<a href="${x}/!hot" class="btn btn-xs <c:if test="${'hot' eq sectionName }">btn-info</c:if>">热门</a>
+							<%--<a href="${x}/!focused" class="btn btn-xs <c:if test="${'focused' eq sectionName }">btn-info</c:if>">关注</a>--%>
 							<c:forEach items="${sections}" var="section">
 								<a href="${x}/!${section.name}"
 									class="btn btn-xs <c:if test="${section.name eq sectionName }">btn-info</c:if>">${section.name}</a>

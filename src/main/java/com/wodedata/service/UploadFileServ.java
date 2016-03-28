@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import com.wodedata.domin.UpFileInfo;
+import com.wodedata.repository.UpFileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,11 +18,19 @@ public class UploadFileServ {
 	
 	@Autowired
 	private Qiniu qiniu;
+
+	@Autowired
+	private UpFileRepo upFileRepo;
 	
 	public QiniuResponse upload(MultipartFile file) throws Exception{
 		Date date = new Date();
 		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd-");
 		String key = dateFormat.format(date)+UUID.randomUUID().toString();
 		return qiniu.upload(file.getBytes(), key);
+	}
+
+	public void saveFileInfo(UpFileInfo upFileInfo) {
+		upFileInfo.setCreateAt(new Date());
+		upFileRepo.save(upFileInfo);
 	}
 }

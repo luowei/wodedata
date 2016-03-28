@@ -30,4 +30,8 @@ public class SectionServ {
 		sectionRepo.save(section);
 		return section;
 	}
+
+	public Section getOneNode(int id) {
+		return sectionRepo.findOne(new Integer(id));
+	}
 }

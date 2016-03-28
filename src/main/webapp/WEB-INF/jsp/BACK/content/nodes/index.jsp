@@ -29,12 +29,12 @@
 			<div class="row">
 				<div class="col-md-12" style="margin-top: 30px">
 					<div class="panel panel-info">
-						<div class="panel-heading">分类</div>
+						<div class="panel-heading">节点</div>
 
 						<div class="panel-body">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#" >列表</a></li>
-								<li class=""><a href="${back}/content/sections/new" >新增</a></li>
+								<li class=""><a href="${back}/content/nodes/new" >新增</a></li>
 							</ul>
 							<div class="tab-content">
 									<div class="table-responsive">
@@ -43,28 +43,34 @@
 												<tr>
 												<th width="5%">#</th>
 													<th width="15%">名字</th>
-													<th width="70%">描述</th>
+													<th width="40%">描述</th>
+													<th width="5%">状态</th>
+													<th width="10%">话题数</th>
+													<th width="15%">分类</th>
 													<th width="10%">处理</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach items="${sections}" var="section">
+											<c:forEach items="${nodes}" var="node">
 												<tr>
-													<td>${section.id}</td>
-													<td>${section.name}</td>
+													<td>${node.id}</td>
+													<td>${node.name}</td>
 													<td>
-													<%--<c:choose>--%>
-                   										<%--<c:when test="${fn:length(section.description) > 20}">--%>
-                      									<%--<c:out value="${fn:substring(section.description, 0, 20)}" /> . . .--%>
-                   										<%--</c:when>--%>
-                  										<%--<c:otherwise>--%>
-                   										<%--<c:out value="${section.description}" />--%>
-                   										<%--</c:otherwise>--%>
-              										<%--</c:choose>--%>
+													<c:choose>  
+                   										<c:when test="${fn:length(node.description) > 20}">  
+                      									<c:out value="${fn:substring(node.description, 0, 20)}" /> . . .  
+                   										</c:when>  
+                  										<c:otherwise>  
+                   										<c:out value="${node.description}" />  
+                   										</c:otherwise>  
+              										</c:choose> 
 													</td>
+													<td>${node.status}</td>
+													<td>${node.topicCount}</td>
+													<td>${node.section.name}</td>
 													<td>
-														<a class="btn btn-info btn-xs" href="${x}/back/content/sections/${section.id}/edit" >编辑</a>
-														<button class="btn btn-danger btn-xs" data-toggle="modal" data-href="${x}/back/content/sections/${node.id}/delete"
+														<a class="btn btn-info btn-xs" href="${x}/back/content/nodes/${node.id}/edit" >编辑</a>
+														<button class="btn btn-danger btn-xs" data-toggle="modal" data-href="${x}/back/content/nodes/${node.id}/delete"
 															data-target="#delete">删除</button>
 													</td>
 												</tr>

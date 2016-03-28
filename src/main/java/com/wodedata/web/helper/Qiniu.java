@@ -29,7 +29,7 @@ public class Qiniu {
 	}
 
 	private String getUpToken() {
-		return auth.uploadToken("spring-abc", null, 3600, new StringMap().putNotEmpty("returnBody",
+		return auth.uploadToken(this.space, null, 3600, new StringMap().putNotEmpty("returnBody",
 				"{\"key\": $(key), \"hash\": $(etag), \"width\": $(imageInfo.width), \"height\": $(imageInfo.height)}"));
 	}
 
@@ -43,7 +43,12 @@ public class Qiniu {
 	
 	public QiniuResponse upload(byte[] bytes, String key) throws QiniuException {
 		String token = getUpToken();
-		Response res = uploadManager.put(bytes, key, token);
+		Response res = null;
+		try {
+			res = uploadManager.put(bytes, key, token);
+		} catch (QiniuException e) {
+			e.printStackTrace();
+		}
 		QiniuResponse ret = res.jsonToObject(QiniuResponse.class);
 		ret.url="http://"+this.domain+"/"+ret.key;
 		return ret;

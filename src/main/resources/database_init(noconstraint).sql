@@ -229,6 +229,23 @@ BEGIN;
 INSERT INTO `topic` VALUES ('1', null, '0', '李东成说毛时代第1集', '2016-03-20 21:36:11', null, null, null, '0', '0', '0', '李东成说毛时代第1集', null, '19', '1', '1'), ('18', null, '0', '为什么说技术很有趣', '2016-03-21 01:03:25', null, null, null, '0', '0', '2333', '为什么说技术很有趣', null, '1', '25', '1');
 COMMIT;
 
+
+-- ----------------------------
+--  Table structure for `up_fileinfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `up_fileinfo`;
+CREATE TABLE `up_fileinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fileName` varchar(255) NOT NULL,
+  `fileType` varchar(255) NOT NULL,
+  `fileSize` bigint(20) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `fileKey` varchar(255) DEFAULT NULL,
+  `fileHash` varchar(255) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
 -- ----------------------------
 --  Table structure for `user`
 -- ----------------------------
