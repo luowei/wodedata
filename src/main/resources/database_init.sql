@@ -19,7 +19,7 @@ SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- 导出 spring_winds 的数据库结构
-CREATE DATABASE IF NOT EXISTS `spring_winds` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE IF NOT EXISTS `spring_winds` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `spring_winds`;
 
 -- ----------------------------
