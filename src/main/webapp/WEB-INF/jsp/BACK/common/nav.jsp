@@ -80,6 +80,7 @@
 						<li><a href="${back}/content/sections">分类</a></li>
 						<li><a href="${back}/content/comments">评论</a></li>
 						<li><a href="${back}/content/pages">页面</a></li>
+						<li><a href="${back}/content/upfile">文件</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
 				<li><a href="#"><i class="fa  fa-user"></i> 用户管理<span

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.wodedata.domin.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -23,7 +24,7 @@ import com.wodedata.service.UserServ;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Controller
 @RequestMapping("/back/content/topics")
 public class ContentTopicC {
 	

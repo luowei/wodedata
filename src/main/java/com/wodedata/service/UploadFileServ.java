@@ -7,7 +7,10 @@ import java.util.UUID;
 import com.wodedata.domin.UpFileInfo;
 import com.wodedata.repository.UpFileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.wodedata.web.helper.Qiniu;
@@ -32,5 +35,21 @@ public class UploadFileServ {
 	public void saveFileInfo(UpFileInfo upFileInfo) {
 		upFileInfo.setCreateAt(new Date());
 		upFileRepo.save(upFileInfo);
+	}
+
+	//获得第p页的所有文件
+	public Page<UpFileInfo> getAllUpFile(int page) {
+		PageRequest pageRequest = new PageRequest(--page, 30);
+		return upFileRepo.findAll(pageRequest);
+	}
+
+	//根据id删除这一列的文件
+	@Transactional
+	public void deleteById(int id) {
+		UpFileInfo file = upFileRepo.findOne(id);
+		qiniu.deleteFileByKey(file.getKey());
+
+		upFileRepo.delete(id);
+
 	}
 }
