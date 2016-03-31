@@ -3,7 +3,6 @@
 <%@ include file="../../common/head.jsp" %>
 
 
-
 <body>
 
 <div id="wrapper">
@@ -38,8 +37,8 @@
                             <li role="presentation" class="active"><a href="#list"
                                                                       aria-controls="list" role="tab" data-toggle="tab">列表</a>
                             </li>
-                            <%--<li class=""><a href="#search" aria-controls="search"--%>
-                            <%--role="tab" data-toggle="tab">搜索</a></li>--%>
+                            <li class=""><a href="#upload" aria-controls="upload"
+                                            role="tab" data-toggle="tab">上传文件</a></li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="list">
@@ -86,18 +85,18 @@
                                                         <img src="${file.url}">
                                                     </a>
                                                 </td>
-                                                <%--<td><a class="label label-success" href="${file.url}" target="_blank">--%>
-                                                        <%--${file.url}--%>
-                                                        <%--&lt;%&ndash;<c:choose>&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;<c:when test="${fn:length(file.url) > 2}">&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;<c:out value="${fn:substring(file.url, 0, 100)}"/> . . .&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;</c:when>&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;<c:otherwise>&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;<c:out value="${file.url}"/>&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;</c:otherwise>&ndash;%&gt;--%>
-                                                        <%--&lt;%&ndash;</c:choose>&ndash;%&gt;--%>
-                                                <%--</a>--%>
-                                                <%--</td>--%>
+                                                    <%--<td><a class="label label-success" href="${file.url}" target="_blank">--%>
+                                                    <%--${file.url}--%>
+                                                    <%--<%--<c:choose>--%>--%>
+                                                    <%--<%--<c:when test="${fn:length(file.url) > 2}">--%>--%>
+                                                    <%--<%--<c:out value="${fn:substring(file.url, 0, 100)}"/> . . .--%>--%>
+                                                    <%--<%--</c:when>--%>--%>
+                                                    <%--<%--<c:otherwise>--%>--%>
+                                                    <%--<%--<c:out value="${file.url}"/>--%>--%>
+                                                    <%--<%--</c:otherwise>--%>--%>
+                                                    <%--<%--</c:choose>--%>--%>
+                                                    <%--</a>--%>
+                                                    <%--</td>--%>
                                                 <td><span class="label label-default">${file.key}</span></td>
                                                 <td><span class="label label-default">${file.hash}</span></td>
                                                 <td><span class="label label-default"><fmt:formatDate
@@ -116,30 +115,48 @@
                                 </div>
                                 <!-- /.table-responsive -->
                             </div>
-                            <%--<div role="tabpanel" class="tab-pane" id="search">--%>
-                            <%--<form action="${x}/back/content/topics/search" method="get">--%>
-                            <%--<div class="form-horizontal" style="margin-top: 30px">--%>
-                            <%--<div class="form-group">--%>
-                            <%--<label class="control-label col-md-2">昵称</label>--%>
-                            <%--<div class="col-md-9">--%>
-                            <%--<input type="text" class="form-control" name="nick" value="${nick}">--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                            <%--<label class="control-label col-md-2">标题</label>--%>
-                            <%--<div class="col-md-9">--%>
-                            <%--<input type="text" class="form-control" name="title" value="${title }">--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="form-group">--%>
-                            <%--<div class="col-md-9 col-md-offset-2 ">--%>
-                            <%--<input type="submit" class="btn btn-info center-block"--%>
-                            <%--value="搜索">--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--</form>--%>
-                            <%--</div>--%>
+
+                            <div role="tabpanel" class="tab-pane" id="upload">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form action="/upload-target" class="dropzone"></form>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <img alt="" src="" style="max-height: 640px; width: auto"
+                                                     id="file-preview">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer container-fluid">
+                                        <div class="row-fluid">
+
+                                            <div class="label label-default col-md-1">分类
+                                                <select id="section" name="section" class="input">
+                                                    <option value="" selected="selected"> -- -- </option>
+                                                </select>
+                                            </div>
+                                            <div class="label label-default col-md-1 col-md-offset-1">结点
+                                                <select id="node" name="node" class="input">
+                                                    <option value="" selected="selected"> -- -- </option>
+                                                </select>
+                                            </div>
+                                            <div class="label label-default col-md-1 col-md-offset-1">话题
+                                                <select id="topic" name="topic" class="input">
+                                                    <option value="" selected="selected"> -- -- </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1 col-md-offset-6">
+                                                <button type="button" class="btn btn-info" id="btn-upload">上传</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
                         </div>
                     </div>
                     <div class="panel-footer">
@@ -155,6 +172,7 @@
 <script src="${x}/js/bootstrap.min.js"></script>
 <script src="${x}/js/metisMenu.min.js"></script>
 <script src="${x}/js/sb-admin-2.js"></script>
+<script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
     $(".btn-delete").on("click", function (e) {
         var url = $(this).attr("data-url");
@@ -163,6 +181,8 @@
             location.href = url;
         })
     })
+
+
 </script>
 </body>
 </html>
