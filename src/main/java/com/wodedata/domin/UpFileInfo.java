@@ -14,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 
 @Entity
-@Table(name = "up_fileinfo", catalog = "spring_winds" )
+@Table(name = "up_fileinfo", catalog = "lidongchengsay" )
 public class UpFileInfo {
 
     @Id
