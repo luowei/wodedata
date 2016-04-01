@@ -9,7 +9,7 @@
  Target Server Version : 50163
  File Encoding         : utf-8
 
- Date: 04/01/2016 13:10:11 PM
+ Date: 04/01/2016 15:32:30 PM
 */
 
 SET NAMES utf8;
@@ -236,6 +236,8 @@ CREATE TABLE `up_fileinfo` (
   `fileKey` varchar(255) DEFAULT NULL,
   `fileHash` varchar(255) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
+  `section_id` int(11) DEFAULT NULL,
+  `node_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

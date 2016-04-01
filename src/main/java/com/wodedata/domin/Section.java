@@ -28,6 +28,7 @@ public class Section implements java.io.Serializable {
 	private String name;
 	private int sort;
 	private Set<Node> nodes = new HashSet<Node>(0);
+	private Set<UpFileInfo> upFiles = new HashSet<UpFileInfo>(0);
 
 	public Section() {
 	}
@@ -40,6 +41,14 @@ public class Section implements java.io.Serializable {
 		this.name = name;
 		this.sort = sort;
 		this.nodes = nodes;
+	}
+
+	public Section(Integer id, String name, int sort, Set<Node> nodes, Set<UpFileInfo> upFiles) {
+		this.id = id;
+		this.name = name;
+		this.sort = sort;
+		this.nodes = nodes;
+		this.upFiles = upFiles;
 	}
 
 	@Id
@@ -81,4 +90,12 @@ public class Section implements java.io.Serializable {
 		this.nodes = nodes;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
+	public Set<UpFileInfo> getUpFiles() {
+		return upFiles;
+	}
+
+	public void setUpFiles(Set<UpFileInfo> upFiles) {
+		this.upFiles = upFiles;
+	}
 }

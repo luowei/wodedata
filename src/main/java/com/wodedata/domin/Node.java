@@ -37,6 +37,7 @@ public class Node implements java.io.Serializable {
 	private int status;
 	private Set<Topic> topics = new HashSet<Topic>(0);
 	private Set<Focus> focuses = new HashSet<Focus>(0);
+	private Set<UpFileInfo> upFiles = new HashSet<UpFileInfo>(0);
 
 	public Node() {
 	}
@@ -56,6 +57,20 @@ public class Node implements java.io.Serializable {
 		this.status = status;
 		this.topics = topics;
 		this.focuses = focuses;
+	}
+
+	public Node(Integer id, Section section, String avatar, String description, long topicCount, String name,
+				int status, Set<Topic> topics, Set<Focus> focuses, Set<UpFileInfo> upFiles) {
+		this.id = id;
+		this.section = section;
+		this.avatar = avatar;
+		this.description = description;
+		this.topicCount = topicCount;
+		this.name = name;
+		this.status = status;
+		this.topics = topics;
+		this.focuses = focuses;
+		this.upFiles = upFiles;
 	}
 
 	@Id
@@ -143,4 +158,12 @@ public class Node implements java.io.Serializable {
 		this.focuses = focuses;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
+	public Set<UpFileInfo> getUpFiles() {
+		return upFiles;
+	}
+
+	public void setUpFiles(Set<UpFileInfo> upFiles) {
+		this.upFiles = upFiles;
+	}
 }

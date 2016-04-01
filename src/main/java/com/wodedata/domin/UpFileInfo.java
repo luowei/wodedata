@@ -17,35 +17,48 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "up_fileinfo", catalog = "lidongchengsay" )
 public class UpFileInfo {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
 
     @NotNull(message="名称不能为空")
     @Size(max=60,message="名称最多六十个字符")
-    @Column(name = "fileName")
     private String name;
 
-    @Column(name = "fileType")
     private String type;
 
-    @Column(name = "fileSize")
     private Integer size;
 
-    @Column(name = "fileKey")
     private String key;
 
-    @Column(name = "url")
     private String url;
 
-    @Column(name = "fileHash")
     private String hash;
 
 //    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE,pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "create_at")
     private Date createAt;
 
+    private Section section;
+
+    private Node node;
+
+    public UpFileInfo() {
+    }
+
+    public UpFileInfo(String name, String type, Integer size, String key, String url,
+                      String hash, Date createAt, Section section, Node node) {
+        this.name = name;
+        this.type = type;
+        this.size = size;
+        this.key = key;
+        this.url = url;
+        this.hash = hash;
+        this.createAt = createAt;
+        this.section = section;
+        this.node = node;
+    }
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -54,6 +67,7 @@ public class UpFileInfo {
         this.id = id;
     }
 
+    @Column(name = "fileName")
     public String getName() {
         return name;
     }
@@ -62,6 +76,7 @@ public class UpFileInfo {
         this.name = name;
     }
 
+    @Column(name = "fileType")
     public String getType() {
         return type;
     }
@@ -70,6 +85,7 @@ public class UpFileInfo {
         this.type = type;
     }
 
+    @Column(name = "fileSize")
     public Integer getSize() {
         return size;
     }
@@ -78,6 +94,7 @@ public class UpFileInfo {
         this.size = size;
     }
 
+    @Column(name = "fileKey")
     public String getKey() {
         return key;
     }
@@ -86,6 +103,7 @@ public class UpFileInfo {
         this.key = key;
     }
 
+    @Column(name = "url")
     public String getUrl() {
         return url;
     }
@@ -94,6 +112,7 @@ public class UpFileInfo {
         this.url = url;
     }
 
+    @Column(name = "fileHash")
     public String getHash() {
         return hash;
     }
@@ -102,11 +121,32 @@ public class UpFileInfo {
         this.hash = hash;
     }
 
+    @Column(name = "create_at")
     public Date getCreateAt() {
         return createAt;
     }
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="section_id")
+    public Section getSection() {
+        return section;
+    }
+
+    public void setSection(Section section) {
+        this.section = section;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="node_id")
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
     }
 }
