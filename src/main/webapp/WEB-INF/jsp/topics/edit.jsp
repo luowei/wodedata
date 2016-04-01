@@ -57,7 +57,7 @@
         <div class="col-md-9">
             <ol class="breadcrumb">
                 <li><a href="${x}/">Topic</a></li>
-                <li><a href="${x}/topics/${topicid}">${topic.title}</a></li>
+                <li><a href="${x}/topics/${topic.id}">${topic.title}</a></li>
                 <li class="active">编辑</li>
             </ol>
             <div class="panel panel-info">
