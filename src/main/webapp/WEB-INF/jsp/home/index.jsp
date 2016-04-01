@@ -3,9 +3,9 @@
 	pageEncoding="UTF-8"%>
 <body>
 	<%@ include file="/WEB-INF/jsp/common/nav.jsp"%>
-	<div class="main-container container">
+	<div class="main-container container-fluid">
 		<%@ include file="/WEB-INF/jsp/common/msg.jsp"%>
-		<div class="row">
+		<div class="row-fluid">
 			<div class="col-md-9">
 				<div class="panel panel-info">
 					<div class="panel-heading">

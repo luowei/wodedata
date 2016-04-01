@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<nav class="navbar  navbar-static-top navbar-default">
-	<div class="container">
+<div class="navbar  navbar-static-top navbar-default" role="navigation">
+	<div class="container-fluid">
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#top-navbar-collapse">
+				<span class="sr-only">切换导航</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<a href="${x}/" class="navbar-brand">${p.site_name.content}</a>
 		</div>
-		<span>
+		<div class="collapse navbar-collapse" id="top-navbar-collapse">
 			<ul class="nav navbar-nav">
 				${p.nav_main.content}
 			</ul>
@@ -64,6 +71,6 @@
 					</ul>
 				</c:otherwise>
 			</c:choose>
-		</span>
+		</div>
 	</div>
-</nav>
+</div>

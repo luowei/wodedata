@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="footer" style="border-top:1px;border-bottom:0px;border-left:0px;border-right:0px; border-style: solid;    border-color: #bce8f1;">
-<div class="container">
+<div class="footer" style="border-top:1px;border-bottom:0px;border-left:0px;border-right:0px; border-style: solid;    border-color: #bce8f1;"/>
+<div class="container-fluid">
 	${p.nav_footer.content}
 	<div class="row">
 		<div class="col-md-4">
