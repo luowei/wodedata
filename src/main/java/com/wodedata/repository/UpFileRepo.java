@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UpFileRepo extends JpaRepository<UpFileInfo, Integer> {
 
+    void deleteByKey(String fileKey);
 }

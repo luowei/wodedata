@@ -36,7 +36,7 @@
                     <h4 class="modal-title">上传</h4>
                 </div>
                 <div class="modal-body" id="upload-body">
-                    <form action="${x}/upload" class="dropzone" id="dropzone"></form>
+                    <form action="${x}/uploadFile/upload" class="dropzone" id="dropzone"></form>
                     <div class="media">
                         <div class="media-body">
                             <img alt="" src="" style="max-height: 640px; width: auto"
@@ -45,10 +45,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btn-upload">上传</button>
+                    <button type="button" class="btn btn-info" id="upload-file">上传</button>
                     <button type="button" class="btn btn-info" id="btn-insert"
                             data-dismiss="modal">完成
                     </button>
+
                 </div>
             </div>
         </div>
@@ -157,27 +158,50 @@
     });
 
     Dropzone.options.dropzone = {
+        url: "${x}/uploadFile/upload",
         autoProcessQueue: false,
+        addRemoveLinks: true,
+        dictRemoveLinks: "删除文件",
+        dictCancelUpload: "取消上传",
+        dictCancelUploadConfirmation: "取消上传确认",
+        dictRemoveFile: "删除文件",
+        maxFiles: 10,
+        maxFilesize: 51200,
+        acceptedFiles: "audio/*,image/*,video/*,.psd,.pdf", //".jpg,.jpeg,.png,.gif,.psd,.pdf,.mp3,.wma,.mp4,.ogg,.mov.avi"
         init: function () {
-            var submitButton = document.querySelector("#btn-upload");
+            var submitButton = document.querySelector("#upload-file");
             dropzone = this; // closure
 
             submitButton.addEventListener("click", function () {
                 dropzone.processQueue(); // Tell Dropzone to process all queued file.
             });
+
+            //文件上传成功
             this.on("success", function (file, response) {
 
-                var jsonData = JSON.stringify({name:file.name,type:file.type,size:file.size,key:response.key,url:response.url,hash:response.hash});
+                var jsonData = JSON.stringify({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    key: response.key,
+                    url: response.url,
+                    hash: response.hash
+                });
+
                 //保存上传的文件信息
                 $.ajax({
-                    url: '${x}/saveFileInfo',
+                    url: '${x}/uploadFile/saveFileInfo',
                     type: "post",
                     data: jsonData,
                     cache: false,
+                    async: false,    //同步
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (dat) {
-                        //alert(dat)
+                        console.log(dat);
+                        file.key = response.key;
+                        file.url = response.url;
+                        file.hash = response.hash;
                     }
                 });
 
@@ -198,31 +222,51 @@
 
                     var eleStr = "";
                     //插入音频
-                    if( file.type.indexOf("audio/")==0){
-                        eleStr = '<audio src="'+url+'" controls="controls">你的浏览器不支持音频元素</audio>';
+                    if (file.type.indexOf("audio/") == 0) {
+                        eleStr = '<audio src="' + url + '" controls="controls">你的浏览器不支持音频元素</audio>';
 
                         //插入图片
-                    }else if(file.type.indexOf("image/")==0){
+                    } else if (file.type.indexOf("image/") == 0) {
                         eleStr = "![" + name + "](" + url + ")";//md的图片元素
 
                         //插入视频
-                    }else if(file.type.indexOf("video/")==0){
-                        eleStr = '<video src="'+url+'"  width="400" height="300" controls="controls">你的浏览器不支持视频标签</video>';
+                    } else if (file.type.indexOf("video/") == 0) {
+                        eleStr = '<video src="' + url + '"  width="400" height="300" controls="controls">你的浏览器不支持视频标签</video>';
                     }
                     inserStr(textareaContent, eleStr);//光标位置插入
                 }
             });
+
+            //移除文件
+            this.on("removedfile", function (file) {
+                if (file.key == null || file.key == undefined) {
+                    return;
+                }
+
+                var jsonData = JSON.stringify({key: file.key, url: file.url, hash: file.hash});
+                //保存上传的文件信息
+                $.ajax({
+                    url: '${x}/uploadFile/removeFile',
+                    type: "post",
+                    data: jsonData,
+                    cache: false,
+                    async: false,    //同步
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (dat) {
+                        console.log(dat);
+                    }
+                });
+
+            });
             this.on("addedfile", function () {
                 console.log("add!");
             });
-            this.on('drop', function(file) {
+            this.on('drop', function (file) {
 //                alert('file');
             });
-        },
-        url: "${x}/upload",
-        maxFiles: 10,
-        maxFilesize: 51200,
-        acceptedFiles: "audio/*,image/*,video/*,.psd,.pdf" //".jpg,.jpeg,.png,.gif,.psd,.pdf,.mp3,.wma,.mp4,.ogg,.mov.avi"
+        }
+
     };
 </script>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>

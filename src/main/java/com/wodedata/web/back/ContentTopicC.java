@@ -6,12 +6,8 @@ import com.wodedata.domin.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wodedata.domin.Node;
@@ -21,7 +17,6 @@ import com.wodedata.service.SectionServ;
 import com.wodedata.service.TopicServ;
 import com.wodedata.service.UserServ;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -39,7 +34,14 @@ public class ContentTopicC {
 	
 	@Autowired
 	private SectionServ sectionServ;
-	
+
+
+	@RequestMapping("/{id}/getAllTopic")
+	@ResponseBody
+	public List<Topic>getAllTopic(@PathVariable(value="id") Integer id){
+		return topicServ.getAllTopicByNodeId(id);
+	}
+
 	/**
 	 * 显示话题列表
 	 * @param p

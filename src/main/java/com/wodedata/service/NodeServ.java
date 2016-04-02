@@ -22,7 +22,7 @@ public class NodeServ {
 	
 	@Autowired
 	private NodeRepo nodeRepo;
-	
+
 	public Node createBeforCheck(Node node){
 		return nodeRepo.save(node);
 	}
@@ -114,5 +114,9 @@ public class NodeServ {
 	
 	public void save(Node node){
 		nodeRepo.save(node);
+	}
+
+	public List<Node> getAllBySectionId(Integer id) {
+		return nodeRepo.findBySection_Id(id);
 	}
 }

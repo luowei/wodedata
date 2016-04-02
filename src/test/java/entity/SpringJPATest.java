@@ -17,7 +17,7 @@ import com.wodedata.domin.User;
 import com.wodedata.repository.UserRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/applicationContext.xml" })
+@ContextConfiguration({"/applicationContext.xml"})
 public class SpringJPATest {
 	@Autowired
 	private UserRepo userRepo;

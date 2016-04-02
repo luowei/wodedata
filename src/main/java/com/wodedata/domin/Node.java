@@ -1,6 +1,10 @@
 package com.wodedata.domin;
 // Generated 2015-11-14 18:40:02 by Hibernate Tools 4.3.1.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -35,8 +39,11 @@ public class Node implements java.io.Serializable {
 	@Size(max=60,message="名称最多六十个字符")
 	private String name;
 	private int status;
+	@JsonIgnore
 	private Set<Topic> topics = new HashSet<Topic>(0);
+	@JsonIgnore
 	private Set<Focus> focuses = new HashSet<Focus>(0);
+	@JsonIgnore
 	private Set<UpFileInfo> upFiles = new HashSet<UpFileInfo>(0);
 
 	public Node() {
@@ -140,15 +147,18 @@ public class Node implements java.io.Serializable {
 		this.status = status;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
 	public Set<Topic> getTopics() {
 		return this.topics;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	public void setTopics(Set<Topic> topics) {
 		this.topics = topics;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
 	public Set<Focus> getFocuses() {
 		return this.focuses;
@@ -158,6 +168,7 @@ public class Node implements java.io.Serializable {
 		this.focuses = focuses;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
 	public Set<UpFileInfo> getUpFiles() {
 		return upFiles;

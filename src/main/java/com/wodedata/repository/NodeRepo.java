@@ -25,4 +25,6 @@ public interface NodeRepo extends JpaRepository<Node, Integer>{
 	@Query("SELECT n FROM Node n "
 			+"ORDER BY n.topicCount DESC")
 	Page<Node> findAllOrderByTopicCountDesc(Pageable pageRequest);
+
+	List<Node> findBySection_Id(Integer id);
 }

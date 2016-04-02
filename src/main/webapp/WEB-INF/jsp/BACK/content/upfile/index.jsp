@@ -2,7 +2,6 @@
          pageEncoding="UTF-8" %>
 <%@ include file="../../common/head.jsp" %>
 
-
 <body>
 
 <div id="wrapper">
@@ -82,19 +81,19 @@
                                                 </td>
                                                 <td>
                                                     <a href="${file.url}" class="thumbnail" target="_blank">
-                                                        <img src="${file.url}">
+                                                        <img src="${file.url}" style="width:40px;height:40px;">
                                                     </a>
                                                 </td>
                                                     <%--<td><a class="label label-success" href="${file.url}" target="_blank">--%>
                                                     <%--${file.url}--%>
-                                                    <%--<%--<c:choose>--%>--%>
-                                                    <%--<%--<c:when test="${fn:length(file.url) > 2}">--%>--%>
-                                                    <%--<%--<c:out value="${fn:substring(file.url, 0, 100)}"/> . . .--%>--%>
-                                                    <%--<%--</c:when>--%>--%>
-                                                    <%--<%--<c:otherwise>--%>--%>
-                                                    <%--<%--<c:out value="${file.url}"/>--%>--%>
-                                                    <%--<%--</c:otherwise>--%>--%>
-                                                    <%--<%--</c:choose>--%>--%>
+                                                    <%--<c:choose>--%>
+                                                    <%--<c:when test="${fn:length(file.url) > 2}">--%>
+                                                    <%--<c:out value="${fn:substring(file.url, 0, 100)}"/> . . .--%>
+                                                    <%--</c:when>--%>
+                                                    <%--<c:otherwise>--%>
+                                                    <%--<c:out value="${file.url}"/>--%>
+                                                    <%--</c:otherwise>--%>
+                                                    <%--</c:choose>--%>
                                                     <%--</a>--%>
                                                     <%--</td>--%>
                                                 <td><span class="label label-default">${file.key}</span></td>
@@ -117,10 +116,46 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="upload">
-
                                 <div class="panel panel-default">
+                                    <div class="panel-footer container-fluid">
+                                        <div class="row-fluid">
+
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">分类</span>
+                                                    <select id="section" name="section" class="form-control"
+                                                            onchange="appendAllNodes($(this).val())">
+                                                        <option value="" selected="selected"> -- --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">结点</span>
+                                                    <select id="node" name="node" class=" form-control"
+                                                            onchange="appendAllTopics($(this).val())">
+                                                        <option value="" selected="selected"> -- --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">话题</span>
+                                                    <select id="topic" name="topic" class="form-control">
+                                                        <option value="" selected="selected"> -- --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 col-md-offset-5 text-center">
+                                                <button type="button" class="btn btn-info" id="btn-upload">上传
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                     <div class="panel-body">
-                                        <form action="/upload-target" class="dropzone"></form>
+                                        <form action="${x}/back/content/upfile/uploadForm" class="dropzone"></form>
                                         <div class="media">
                                             <div class="media-body">
                                                 <img alt="" src="" style="max-height: 640px; width: auto"
@@ -128,33 +163,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-footer container-fluid">
-                                        <div class="row-fluid">
 
-                                            <div class="label label-default col-md-1">分类
-                                                <select id="section" name="section" class="input">
-                                                    <option value="" selected="selected"> -- -- </option>
-                                                </select>
-                                            </div>
-                                            <div class="label label-default col-md-1 col-md-offset-1">结点
-                                                <select id="node" name="node" class="input">
-                                                    <option value="" selected="selected"> -- -- </option>
-                                                </select>
-                                            </div>
-                                            <div class="label label-default col-md-1 col-md-offset-1">话题
-                                                <select id="topic" name="topic" class="input">
-                                                    <option value="" selected="selected"> -- -- </option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-1 col-md-offset-6">
-                                                <button type="button" class="btn btn-info" id="btn-upload">上传</button>
-                                            </div>
-
-                                        </div>
-                                    </div>
                                 </div>
-
-
                             </div>
 
                         </div>
@@ -182,6 +192,112 @@
         })
     })
 
+
+    //append对应的话题
+    var appendAllTopics = function (id) {
+        //append section option
+        $.ajax({
+            url: "${x}/back/content/topics/" + id + "/getAllTopic",
+            dataType: "json",
+            cache: true,
+            success: function (list) {
+                $('#topic').find('option:gt(0)').remove();
+                $.each(list, function (i, item) {
+                    $('#topic').append($('<option>', {
+                        value: item.id,
+                        text: item.title
+                    }));
+                })
+            }
+        })
+
+    };
+
+
+    //append对应的结点
+    var appendAllNodes = function (id) {
+        //append section option
+        $.ajax({
+            url: "${x}/back/content/nodes/" + id + "/getAllNode",
+            dataType: "json",
+            cache: true,
+            success: function (list) {
+                $('#topic').find('option:gt(0)').remove();
+                $('#node').find('option:gt(0)').remove();
+                $.each(list, function (i, item) {
+                    $('#node').append($('<option>', {
+                        value: item.id,
+                        text: item.name
+                    }));
+                })
+            }
+        })
+
+    };
+
+    //页面加载完成就执行
+    $(function () {
+        //append section option
+        $.ajax({
+            url: "${x}/back/content/sections/getAllSection",
+            dataType: "json",
+            cache: true,
+            success: function (list) {
+                $('#section').find('option:gt(0)').remove();
+                $.each(list, function (i, item) {
+                    $('#section').append($('<option>', {
+                        value: item.id,
+                        text: item.name
+                    }));
+                })
+            }
+        })
+
+    });
+
+    Dropzone.options.dropzone = {
+        autoProcessQueue: false,
+        url: "${x}/upload",
+        addRemoveLinks: true,
+        dictRemoveLinks: "x",
+        dictCancelUpload: "x",
+        maxFiles: 10,
+        maxFilesize: 51200,
+        acceptedFiles: "audio/*,image/*,video/*,.psd,.pdf", //".jpg,.jpeg,.png,.gif,.psd,.pdf,.mp3,.wma,.mp4,.ogg,.mov.avi"
+        init: function () {
+            var submitButton = document.querySelector("#btn-upload");
+            dropzone = this; // closure
+
+            submitButton.addEventListener("click", function () {
+                dropzone.processQueue(); // Tell Dropzone to process all queued file.
+            });
+            this.on("success", function (file, response) {
+
+                var jsonData = JSON.stringify({name:file.name,type:file.type,size:file.size,key:response.key,url:response.url,hash:response.hash});
+                //保存上传的文件信息
+                $.ajax({
+                    url: '${x}/saveFileInfo',
+                    type: "post",
+                    data: jsonData,
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (dat) {
+                        console.log(dat);
+                    }
+                });
+
+
+            });
+            this.on("addedfile", function () {
+                console.log("add!");
+            });
+            this.on('drop', function(file) {
+//                alert('file');
+            });
+        }
+
+    };
 
 </script>
 </body>

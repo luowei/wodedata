@@ -1,6 +1,10 @@
 package com.wodedata.domin;
 // Generated 2015-11-14 18:40:02 by Hibernate Tools 4.3.1.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -27,7 +31,9 @@ public class Section implements java.io.Serializable {
 	@Size(max=60,message="名称最多六十个字符")
 	private String name;
 	private int sort;
+	@JsonIgnore
 	private Set<Node> nodes = new HashSet<Node>(0);
+	@JsonIgnore
 	private Set<UpFileInfo> upFiles = new HashSet<UpFileInfo>(0);
 
 	public Section() {
@@ -81,6 +87,7 @@ public class Section implements java.io.Serializable {
 		this.sort = sort;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
 	public Set<Node> getNodes() {
 		return this.nodes;
@@ -90,6 +97,7 @@ public class Section implements java.io.Serializable {
 		this.nodes = nodes;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
 	public Set<UpFileInfo> getUpFiles() {
 		return upFiles;

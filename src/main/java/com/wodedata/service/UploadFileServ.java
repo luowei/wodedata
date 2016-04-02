@@ -52,4 +52,11 @@ public class UploadFileServ {
 		upFileRepo.delete(id);
 
 	}
+
+	//根据fileKey删除记录
+	@Transactional
+	public void removeFile(String fileKey) {
+		qiniu.deleteFileByKey(fileKey);
+		upFileRepo.deleteByKey(fileKey);
+	}
 }

@@ -79,14 +79,22 @@ public class User implements java.io.Serializable {
 	
 	@Pattern(regexp="^(?!_)(?!.*?_$)[A-Za-z0-9|_]{3,9}",message="用户名三到九个字母或者下滑线,下划线不能再开头或结尾")
 	private String username;
-	
+
+	@JsonIgnore
 	private Set<Follow> followsForFollowerId = new HashSet<Follow>(0);
+	@JsonIgnore
 	private Set<Notification> notifications = new HashSet<Notification>(0);
+	@JsonIgnore
 	private Set<Topic> topics = new HashSet<Topic>(0);
+	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);
+	@JsonIgnore
 	private Set<Focus> focuses = new HashSet<Focus>(0);
+	@JsonIgnore
 	private Set<Collection> collections = new HashSet<Collection>(0);
+	@JsonIgnore
 	private Set<Follow> followsForFollowingId = new HashSet<Follow>(0);
+	@JsonIgnore
 	private Set<Comment> likeComments= new HashSet<Comment>();
 	public User() {
 	}
@@ -380,7 +388,6 @@ public class User implements java.io.Serializable {
 		this.followsForFollowingId = followsForFollowingId;
 	}
 	
-	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "likeUsers")
 	public Set<Comment> getLikeComments() {
 		return likeComments;

@@ -1,6 +1,7 @@
 package com.wodedata.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -287,5 +288,9 @@ public class TopicServ {
 			User user = userRepo.findOneByNick(nick);
 			return topicRepo.findByUserOrderByCreateAtDesc(user, pageRequest);
 		}
+	}
+
+	public List<Topic> getAllTopicByNodeId(Integer id) {
+		return topicRepo.findByNodeId(id);
 	}
 }

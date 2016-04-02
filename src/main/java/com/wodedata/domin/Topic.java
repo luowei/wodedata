@@ -1,6 +1,10 @@
 package com.wodedata.domin;
 // Generated 2015-11-14 18:40:02 by Hibernate Tools 4.3.1.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +41,6 @@ public class Topic implements java.io.Serializable {
 	private Date lastCommentAt;
 	private Integer lastCommentUserId;
 	
-//	@Transient
 	private User LastCommentUser;
 	
 	private Long likeCount=0L;
@@ -50,7 +53,9 @@ public class Topic implements java.io.Serializable {
 	private Long viewCount=0L;
 	private Long commentCount=0L;
 	private Integer collectonId;
+	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);
+	@JsonIgnore
 	private Set<Collection> collections = new HashSet<Collection>(0);
 
 	public Topic() {
@@ -240,6 +245,7 @@ public class Topic implements java.io.Serializable {
 		this.collectonId = collectonId;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
 	public Set<Comment> getComments() {
 		return this.comments;
@@ -249,6 +255,7 @@ public class Topic implements java.io.Serializable {
 		this.comments = comments;
 	}
 
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
 	public Set<Collection> getCollections() {
 		return this.collections;

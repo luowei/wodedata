@@ -11,6 +11,8 @@ import com.wodedata.domin.Section;
 import com.wodedata.domin.Topic;
 import com.wodedata.domin.User;
 
+import java.util.List;
+
 public interface TopicRepo extends JpaRepository<Topic, Integer>{
 	
 	long countByNode(Node node);
@@ -202,4 +204,6 @@ public interface TopicRepo extends JpaRepository<Topic, Integer>{
 			" WHERE u.id=?1 "
 			+"ORDER BY t.lastCommentAt DESC,t.createAt DESC")
 	Page<Topic> findByFocusedOrderByDefault(int userId,Pageable pageRequest);
+
+	List<Topic> findByNodeId(Integer id);
 }

@@ -15,6 +15,10 @@
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
+-- 导出 lidongchengsay 的数据库结构
+CREATE DATABASE IF NOT EXISTS `lidongchengsay` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `lidongchengsay`;
+
 -- ----------------------------
 --  Table structure for `collection`
 -- ----------------------------

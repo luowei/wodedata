@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,11 @@ public class ContentNodesC {
     @Autowired
     private NodeServ nodeServ;
 
+    @RequestMapping("/{id}/getAllNode")
+    @ResponseBody
+    public List<Node> getAllNodeBy(@PathVariable("id") Integer id) throws Exception {
+        return nodeServ.getAllBySectionId(id);
+    }
 
     @RequestMapping("")
     public String index(@RequestParam(value="p",defaultValue="1") int p,
