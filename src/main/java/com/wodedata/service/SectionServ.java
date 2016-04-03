@@ -34,4 +34,8 @@ public class SectionServ {
 	public Section getOneNode(int id) {
 		return sectionRepo.findOne(new Integer(id));
 	}
+
+	public Section findById(Integer id) {
+		return sectionRepo.findOne(id);
+	}
 }

@@ -293,4 +293,8 @@ public class TopicServ {
 	public List<Topic> getAllTopicByNodeId(Integer id) {
 		return topicRepo.findByNodeId(id);
 	}
+
+	public Topic findById(Integer id) {
+		return topicRepo.findOne(id);
+	}
 }

@@ -119,4 +119,8 @@ public class NodeServ {
 	public List<Node> getAllBySectionId(Integer id) {
 		return nodeRepo.findBySection_Id(id);
 	}
+
+	public Node findById(Integer id) {
+		return nodeRepo.findOne(id);
+	}
 }

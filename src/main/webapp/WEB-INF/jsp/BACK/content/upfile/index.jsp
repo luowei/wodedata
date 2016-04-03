@@ -61,41 +61,14 @@
                                         <c:forEach items="${files}" var="file">
                                             <tr>
                                                 <td>${file.id}</td>
-                                                <td>${file.name}
-                                                        <%--<c:choose>--%>
-                                                        <%--<c:when test="${fn:length(topic.title) > 2}">--%>
-                                                        <%--<c:out value="${fn:substring(topic.title, 0, 20)}" /> . . .--%>
-                                                        <%--</c:when>--%>
-                                                        <%--<c:otherwise>--%>
-                                                        <%--<c:out value="${topic.title}" />--%>
-                                                        <%--</c:otherwise>--%>
-                                                        <%--</c:choose>--%>
-                                                </td>
-                                                <td>
-                                                        ${file.type}
-                                                        <%--${fn:substring(topic.user.nick, 0, 100)}--%>
-                                                </td>
-                                                <td>
-                                                        ${file.size/1000}KB
-                                                        <%--<fmt:formatDate value="${topic.createAt}" type="both"/>--%>
-                                                </td>
+                                                <td>${file.name}</td>
+                                                <td>${file.type}</td>
+                                                <td>${file.size/1000}KB</td>
                                                 <td>
                                                     <a href="${file.url}" class="thumbnail" target="_blank">
                                                         <img src="${file.url}" style="width:40px;height:40px;">
                                                     </a>
                                                 </td>
-                                                    <%--<td><a class="label label-success" href="${file.url}" target="_blank">--%>
-                                                    <%--${file.url}--%>
-                                                    <%--<c:choose>--%>
-                                                    <%--<c:when test="${fn:length(file.url) > 2}">--%>
-                                                    <%--<c:out value="${fn:substring(file.url, 0, 100)}"/> . . .--%>
-                                                    <%--</c:when>--%>
-                                                    <%--<c:otherwise>--%>
-                                                    <%--<c:out value="${file.url}"/>--%>
-                                                    <%--</c:otherwise>--%>
-                                                    <%--</c:choose>--%>
-                                                    <%--</a>--%>
-                                                    <%--</td>--%>
                                                 <td><span class="label label-default">${file.key}</span></td>
                                                 <td><span class="label label-default">${file.hash}</span></td>
                                                 <td><span class="label label-default"><fmt:formatDate
@@ -146,23 +119,84 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-1 col-md-offset-5 text-center">
-                                                <button type="button" class="btn btn-info" id="btn-upload">上传
+                                            <%--<div class="col-md-1 col-md-offset-5 text-center">--%>
+                                                <%--<button type="button" class="btn btn-info" id="btn-upload">上传--%>
+                                                <%--</button>--%>
+                                            <%--</div>--%>
+                                            <div id="actions" class="col-lg-6 text-center">
+                                                <!-- The fileinput-button span is used to style the file input field as button -->
+                                                <span class="btn btn-success fileinput-button dz-clickable">
+                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                    <span>添加文件</span>
+                                                </span>
+                                                <button type="submit" class="btn btn-primary start">
+                                                    <i class="glyphicon glyphicon-upload"></i>
+                                                    <span>开始上传</span>
+                                                </button>
+                                                <button type="reset" class="btn btn-warning cancel">
+                                                    <i class="glyphicon glyphicon-ban-circle"></i>
+                                                    <span>取消上传</span>
                                                 </button>
                                             </div>
 
                                         </div>
                                     </div>
 
+                                    <%--//参考:http://www.dropzonejs.com/bootstrap.html--%>
                                     <div class="panel-body">
-                                        <form action="${x}/back/content/upfile/uploadForm" class="dropzone"></form>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <img alt="" src="" style="max-height: 640px; width: auto"
-                                                     id="file-preview">
+
+                                        <div class="row-fluid">
+                                            <div class="col-lg-12">
+                                                <!-- The global file processing state -->
+                                                <span class="fileupload-process">
+                                                  <div id="total-progress" class="progress progress-striped active"
+                                                       role="progressbar" aria-valuemin="0"
+                                                       aria-valuemax="100" aria-valuenow="0" style="opacity: 0;">
+                                                      <div class="progress-bar progress-bar-success"
+                                                           style="width: 100%;" data-dz-uploadprogress=""></div>
+                                                  </div>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <%--<div class="table-responsive">--%>
+                                    <div class="table table-striped table-hover files" id="previews">
+                                        <div id="template" class="row file-row" style="margin-top: 1em;border-width: medium;border-color: #4d5256">
+                                            <!-- This is used as the file preview template -->
+                                            <div class="col-lg-2 text-center">
+                                                <span class="preview"><img src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png" data-dz-thumbnail /></span>
+                                            </div>
+                                            <div class="col-lg-2 text-center">
+                                                <p class="name" data-dz-name></p>
+                                                <strong class="error text-danger" data-dz-errormessage></strong>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <p class="size" data-dz-size></p>
+                                                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <button class="btn btn-primary start">
+                                                    <i class="glyphicon glyphicon-upload"></i>
+                                                    <span>上传</span>
+                                                </button>
+                                                <button data-dz-remove class="btn btn-warning cancel">
+                                                    <i class="glyphicon glyphicon-ban-circle"></i>
+                                                    <span>取消</span>
+                                                </button>
+                                                <button data-dz-remove class="btn btn-danger delete">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    <span>删除</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
+                                    <%--</div>--%>
+
+
 
                                 </div>
                             </div>
@@ -183,6 +217,7 @@
 <script src="${x}/js/metisMenu.min.js"></script>
 <script src="${x}/js/sb-admin-2.js"></script>
 <script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
+<%--<script src="${x}/js/uploadFile.js"></script>--%>
 <script type="text/javascript">
     $(".btn-delete").on("click", function (e) {
         var url = $(this).attr("data-url");
@@ -255,49 +290,143 @@
 
     });
 
-    Dropzone.options.dropzone = {
-        autoProcessQueue: false,
-        url: "${x}/upload",
-        addRemoveLinks: true,
-        dictRemoveLinks: "x",
-        dictCancelUpload: "x",
-        maxFiles: 10,
-        maxFilesize: 51200,
-        acceptedFiles: "audio/*,image/*,video/*,.psd,.pdf", //".jpg,.jpeg,.png,.gif,.psd,.pdf,.mp3,.wma,.mp4,.ogg,.mov.avi"
-        init: function () {
-            var submitButton = document.querySelector("#btn-upload");
-            dropzone = this; // closure
 
-            submitButton.addEventListener("click", function () {
-                dropzone.processQueue(); // Tell Dropzone to process all queued file.
-            });
-            this.on("success", function (file, response) {
+    //------- 文件上传模块 -------
+    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    var previewNode = document.querySelector("#template");
+    previewNode.id = "";
+    var previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
 
-                var jsonData = JSON.stringify({name:file.name,type:file.type,size:file.size,key:response.key,url:response.url,hash:response.hash});
-                //保存上传的文件信息
-                $.ajax({
-                    url: '${x}/saveFileInfo',
-                    type: "post",
-                    data: jsonData,
-                    cache: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (dat) {
-                        console.log(dat);
-                    }
-                });
+    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+        url: "${x}/back/content/upfile/upload",
+        //autoProcessQueue: false,
+        //addRemoveLinks: true,
+        //dictRemoveLinks: "删除文件",
+        //dictCancelUpload: "取消上传",
+        //dictCancelUploadConfirmation: "取消上传确认",
+        //dictRemoveFile: "删除文件",
+        //maxFiles: 10,
+        //maxFilesize: 51200,
+        //acceptedFiles: "audio/!*,image/!*,video/!*,.psd,.pdf",
+
+        thumbnailWidth: 80,
+        thumbnailHeight: 80,
+        parallelUploads: 20,
+        previewTemplate: previewTemplate,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#previews", // Define the container to display the previews
+        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+    myDropzone.on("addedfile", function(file) {
+        console.log("addedfile called ....");
+        // Hookup the start button
+        file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+    });
+
+    myDropzone.on("accept",function(file, done){
+        console.log("accept called ....")
+    });
+
+    // Update the total progress bar
+    myDropzone.on("totaluploadprogress", function(progress) {
+        console.log("totaluploadprogress called .... progress:"+progress);
+        document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+    });
+
+    myDropzone.on("selectedfiles",function(files){
+        console.log("selectedfiles called ....");
+    });
+
+    myDropzone.on("sending", function(file, xhr, formData) {
+        console.log("sending called ....");
+        // Show the total progress bar when upload starts
+        document.querySelector("#total-progress").style.opacity = "1";
+        // And disable the start button
+        file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+    });
+
+    myDropzone.on("processing",function(file){
+        console.log("processing called ....")
+        var section = $('#section').find('option:selected').val();
+        var node = $('#node').find('option:selected').val();
+        var topic = $('#topic').find('option:selected').val();
+
+        var params = {name: file.name, type: file.type, size: file.size,sectionId:section,nodeId:node,topicId:topic};
+        myDropzone.options.url = "${x}/back/content/upfile/upload?"+ $.param(params);
+    });
+
+    //单个文件上传进度
+    myDropzone.on("uploadprogress",function(file,progress,bytesSend){
+//        console.log("uploadprogress called .... progress:"+progress+"   bytesSend:"+bytesSend);
+        file.previewElement.querySelector(".progress-bar").style.width = progress + "%";
+    });
 
 
-            });
-            this.on("addedfile", function () {
-                console.log("add!");
-            });
-            this.on('drop', function(file) {
-//                alert('file');
-            });
+    //完成上传
+    myDropzone.on("complete",function(){
+
+    });
+
+    //文件上传成功
+    myDropzone.on("success", function (file, response) {
+        console.log("success called ....");
+
+        if(response != null || response != "" || response != "null"){
+            file.key = response.key;
+            file.url = response.url;
+            file.hash = response.hash;
         }
 
+        var progressBar = file.previewElement.querySelector(".progress");
+        var parentNode = progressBar.parentNode;
+
+        $(progressBar).remove();
+        $(parentNode).append("<span class='label label-success'>上传成功</span>");
+    });
+
+    //移除文件
+    myDropzone.on("removedfile", function (file) {
+        console.log("removedfile called ....");
+        if (file.key == null || file.key == undefined) {
+            return;
+        }
+
+        var jsonData = JSON.stringify({key: file.key, url: file.url, hash: file.hash});
+        //保存上传的文件信息
+        $.ajax({
+            url: '${x}/uploadFile/removeFile',
+            type: "post",
+            data: jsonData,
+            cache: false,
+            async: false,    //同步
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (dat) {
+                console.log(dat);
+            }
+        });
+
+    });
+
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzone.on("queuecomplete", function(progress) {
+        console.log("queuecomplete called ....");
+        document.querySelector("#total-progress").style.opacity = "0";
+    });
+
+    // Setup the buttons for all transfers
+    // The "add files" button doesn't need to be setup because the config
+    // `clickable` has already been specified.
+    document.querySelector("#actions .start").onclick = function() {
+        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
     };
+    document.querySelector("#actions .cancel").onclick = function() {
+        myDropzone.removeAllFiles(true);
+    };
+
 
 </script>
 </body>

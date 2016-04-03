@@ -57,6 +57,8 @@ public class Topic implements java.io.Serializable {
 	private Set<Comment> comments = new HashSet<Comment>(0);
 	@JsonIgnore
 	private Set<Collection> collections = new HashSet<Collection>(0);
+	@JsonIgnore
+	private Set<UpFileInfo> upFileInfos = new HashSet<UpFileInfo>(0);
 
 	public Topic() {
 	}
@@ -265,4 +267,12 @@ public class Topic implements java.io.Serializable {
 		this.collections = collections;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
+	public Set<UpFileInfo> getUpFileInfos() {
+		return upFileInfos;
+	}
+
+	public void setUpFileInfos(Set<UpFileInfo> upFileInfos) {
+		this.upFileInfos = upFileInfos;
+	}
 }

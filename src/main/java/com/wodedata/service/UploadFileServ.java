@@ -39,7 +39,7 @@ public class UploadFileServ {
 
 	//获得第p页的所有文件
 	public Page<UpFileInfo> getAllUpFile(int page) {
-		PageRequest pageRequest = new PageRequest(--page, 30);
+		PageRequest pageRequest = new PageRequest(--page, 20);
 		return upFileRepo.findAll(pageRequest);
 	}
 
