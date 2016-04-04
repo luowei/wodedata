@@ -72,20 +72,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <span class="input-group-addon">分类</span> <select
-                                            class="form-control" id="section">
+                                        <span class="input-group-addon">分类</span>
+                                        <select class="form-control" id="topicSectionName" name="topicSectionName">
                                         <c:forEach items="${sections}" var="section">
                                             <option value="${section.name}">${section.name}</option>
                                         </c:forEach>
-                                    </select>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <span class="input-group-addon">节点</span> <select
-                                            class="form-control" id="topicNodeName" name="topicNodeName">
-                                        <option value="${topic.node.name}">${topic.node.name}</option>
-                                    </select>
+                                        <span class="input-group-addon">节点</span>
+                                        <select class="form-control" id="topicNodeName" name="topicNodeName">
+                                            <option value="${topic.node.name}">${topic.node.name}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -110,19 +110,16 @@
                             </div>
                             <textarea rows="30" class="form-control" name="content"
                                       id="content" data-minlength="6" data-error="正文不少于六个字">${topic.content}</textarea>
-
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <label>标签</label> <input placeholder="为什么填不了？因为这个多标签功能还没有做，按节点分吧"
+                            <label>标签</label>
+                            <input placeholder="为什么填不了？因为这个多标签功能还没有做，按节点分吧"
                                                      class="form-control" disabled="disabled">
-
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-info">
-                                保存
-                            </button>
+                            <button type="submit" class="btn btn-info">保存</button>
                         </div>
                     </form>
                 </div>
@@ -139,7 +136,7 @@
 <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
 <script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
-    $("#section").on("change", function (e) {
+    $("#topicSectionName").on("change", function (e) {
         var sectionName = $("#section").val();
         var url = "${x}/nodes/list/" + sectionName;
         $.getJSON(url, function (nodeNames) {
@@ -152,6 +149,35 @@
         });
 
     });
+
+    $(function(){
+        //设置结点select
+        var sectionName = '${topic.node.section.name}';
+        setupNodeSel(sectionName);
+    });
+
+    function setupNodeSel(sectionName){
+        if(sectionName == ""){
+            $("#topicNodeName").html("<option value=''> -- -- </option>");
+            return ;
+        }
+
+        var url = "${x}/nodes/list/" + sectionName;
+        $.getJSON(url, function (nodeNames) {
+            var optionStr = "";
+            for (var i = 0; i < nodeNames.length; i++) {
+                var selectedName = '${topic.node.name}';
+                var selected = "";
+                if(selectedName == nodeNames[i]){
+                    selected = " selected ";
+                }
+                optionStr += "<option "+selected+">" + nodeNames[i] + "</option>";
+            }
+            console.log(optionStr);
+            $("#topicNodeName").html(optionStr);
+        });
+    }
+
     $("#btn-preview").on("click", function (e) {
         var content = $("#content").val();
         console.log(content);

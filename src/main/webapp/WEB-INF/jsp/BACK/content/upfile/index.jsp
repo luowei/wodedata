@@ -73,7 +73,16 @@
                                                 </td>
                                                 <td><span class="label label-default">${file.section.name}</span></td>
                                                 <td><span class="label label-default">${file.node.name}</span></td>
-                                                <td><span class="label label-default">${file.topic.title}</span></td>
+                                                <td><span class="label label-default">
+                                                <c:choose>
+                                                    <c:when test="${fn:length(file.topic.title) > 10}">
+                                                        <c:out value="${fn:substring(file.topic.title, 0, 10)}"/> . . .
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value="$${file.topic.title}"/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                </span></td>
                                                 <td>${file.type}</td>
                                                 <td>${file.size/1000}KB</td>
                                                 <td><span class="label label-default">${file.key}</span></td>

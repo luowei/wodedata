@@ -4,6 +4,7 @@ package com.wodedata.web.front;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wodedata.domin.*;
 import com.wodedata.web.helper.ReadData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,10 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.wodedata.domin.Comment;
-import com.wodedata.domin.Node;
-import com.wodedata.domin.Topic;
-import com.wodedata.domin.User;
 import com.wodedata.service.CollectionServ;
 import com.wodedata.service.CommentServ;
 import com.wodedata.service.NodeServ;
@@ -160,8 +157,7 @@ public class TopicC {
 	 */
 	@RequestMapping("/update")
 	public String update(@Validated @ModelAttribute Topic topic,
-			Errors error,
-			String topicNodeName,
+			Errors error,String topicSectionName,String topicNodeName,
 			Model model,
 			RedirectAttributes attributes){
 		
@@ -169,7 +165,9 @@ public class TopicC {
 			model.addAttribute("error",error.getAllErrors());
 			return "/topics/edit";
 		}else{
+//			Section section = sectionServ.getByName(topicSectionName);
 			Node node=nodeServ.getByname(topicNodeName);
+//			node.setSection(section);
 			topic.setNode(node);
 			topicServ.update(topic);
 			attributes.addFlashAttribute("msg","话题已更新");
