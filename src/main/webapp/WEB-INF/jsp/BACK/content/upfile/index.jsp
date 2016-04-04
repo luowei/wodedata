@@ -33,11 +33,12 @@
 
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
-                            <li role="presentation" class="active"><a href="#list"
-                                                                      aria-controls="list" role="tab" data-toggle="tab">列表</a>
+                            <li role="presentation" class="active">
+                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab">列表</a>
                             </li>
-                            <li class=""><a href="#upload" aria-controls="upload"
-                                            role="tab" data-toggle="tab">上传文件</a></li>
+                            <li class="">
+                                <a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">上传文件</a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="list">
@@ -47,9 +48,12 @@
                                         <tr>
                                             <th>#</th>
                                             <th>文件名</th>
+                                            <th>综略图</th>
+                                            <th>分类</th>
+                                            <th>结点</th>
+                                            <th>话题</th>
                                             <th>类型</th>
                                             <th>大小</th>
-                                            <th>综略图</th>
                                             <%--<th>url</th>--%>
                                             <th>key</th>
                                             <th>hash码</th>
@@ -62,13 +66,16 @@
                                             <tr>
                                                 <td>${file.id}</td>
                                                 <td>${file.name}</td>
-                                                <td>${file.type}</td>
-                                                <td>${file.size/1000}KB</td>
                                                 <td>
                                                     <a href="${file.url}" class="thumbnail" target="_blank">
                                                         <img src="${file.url}" style="width:40px;height:40px;">
                                                     </a>
                                                 </td>
+                                                <td><span class="label label-default">${file.section.name}</span></td>
+                                                <td><span class="label label-default">${file.node.name}</span></td>
+                                                <td><span class="label label-default">${file.topic.title}</span></td>
+                                                <td>${file.type}</td>
+                                                <td>${file.size/1000}KB</td>
                                                 <td><span class="label label-default">${file.key}</span></td>
                                                 <td><span class="label label-default">${file.hash}</span></td>
                                                 <td><span class="label label-default"><fmt:formatDate
@@ -120,8 +127,8 @@
                                                 </div>
                                             </div>
                                             <%--<div class="col-md-1 col-md-offset-5 text-center">--%>
-                                                <%--<button type="button" class="btn btn-info" id="btn-upload">上传--%>
-                                                <%--</button>--%>
+                                            <%--<button type="button" class="btn btn-info" id="btn-upload">上传--%>
+                                            <%--</button>--%>
                                             <%--</div>--%>
                                             <div id="actions" class="col-lg-6 text-center">
                                                 <!-- The fileinput-button span is used to style the file input field as button -->
@@ -163,10 +170,13 @@
 
                                     <%--<div class="table-responsive">--%>
                                     <div class="table table-striped table-hover files" id="previews">
-                                        <div id="template" class="row file-row" style="margin-top: 1em;border-width: medium;border-color: #4d5256">
+                                        <div id="template" class="row file-row"
+                                             style="margin-top: 1em;border-width: medium;border-color: #4d5256">
                                             <!-- This is used as the file preview template -->
                                             <div class="col-lg-2 text-center">
-                                                <span class="preview"><img src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png" data-dz-thumbnail /></span>
+                                                <span class="preview"><img
+                                                        src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png"
+                                                        data-dz-thumbnail/></span>
                                             </div>
                                             <div class="col-lg-2 text-center">
                                                 <p class="name" data-dz-name></p>
@@ -174,8 +184,10 @@
                                             </div>
                                             <div class="col-lg-4 text-center">
                                                 <p class="size" data-dz-size></p>
-                                                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                <div class="progress progress-striped active" role="progressbar"
+                                                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success" style="width:0%;"
+                                                         data-dz-uploadprogress></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 text-center">
@@ -195,7 +207,6 @@
                                         </div>
                                     </div>
                                     <%--</div>--%>
-
 
 
                                 </div>
@@ -319,27 +330,29 @@
         clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
     });
 
-    myDropzone.on("addedfile", function(file) {
+    myDropzone.on("addedfile", function (file) {
         console.log("addedfile called ....");
         // Hookup the start button
-        file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+        file.previewElement.querySelector(".start").onclick = function () {
+            myDropzone.enqueueFile(file);
+        };
     });
 
-    myDropzone.on("accept",function(file, done){
+    myDropzone.on("accept", function (file, done) {
         console.log("accept called ....")
     });
 
     // Update the total progress bar
-    myDropzone.on("totaluploadprogress", function(progress) {
-        console.log("totaluploadprogress called .... progress:"+progress);
+    myDropzone.on("totaluploadprogress", function (progress) {
+        console.log("totaluploadprogress called .... progress:" + progress);
         document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
     });
 
-    myDropzone.on("selectedfiles",function(files){
+    myDropzone.on("selectedfiles", function (files) {
         console.log("selectedfiles called ....");
     });
 
-    myDropzone.on("sending", function(file, xhr, formData) {
+    myDropzone.on("sending", function (file, xhr, formData) {
         console.log("sending called ....");
         // Show the total progress bar when upload starts
         document.querySelector("#total-progress").style.opacity = "1";
@@ -347,25 +360,32 @@
         file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
     });
 
-    myDropzone.on("processing",function(file){
+    myDropzone.on("processing", function (file) {
         console.log("processing called ....")
         var section = $('#section').find('option:selected').val();
         var node = $('#node').find('option:selected').val();
         var topic = $('#topic').find('option:selected').val();
 
-        var params = {name: file.name, type: file.type, size: file.size,sectionId:section,nodeId:node,topicId:topic};
-        myDropzone.options.url = "${x}/back/content/upfile/upload?"+ $.param(params);
+        var params = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            sectionId: section,
+            nodeId: node,
+            topicId: topic
+        };
+        myDropzone.options.url = "${x}/back/content/upfile/upload?" + $.param(params);
     });
 
     //单个文件上传进度
-    myDropzone.on("uploadprogress",function(file,progress,bytesSend){
+    myDropzone.on("uploadprogress", function (file, progress, bytesSend) {
 //        console.log("uploadprogress called .... progress:"+progress+"   bytesSend:"+bytesSend);
         file.previewElement.querySelector(".progress-bar").style.width = progress + "%";
     });
 
 
     //完成上传
-    myDropzone.on("complete",function(){
+    myDropzone.on("complete", function () {
 
     });
 
@@ -373,7 +393,7 @@
     myDropzone.on("success", function (file, response) {
         console.log("success called ....");
 
-        if(response != null || response != "" || response != "null"){
+        if (response != null || response != "" || response != "null") {
             file.key = response.key;
             file.url = response.url;
             file.hash = response.hash;
@@ -412,7 +432,7 @@
 
 
     // Hide the total progress bar when nothing's uploading anymore
-    myDropzone.on("queuecomplete", function(progress) {
+    myDropzone.on("queuecomplete", function (progress) {
         console.log("queuecomplete called ....");
         document.querySelector("#total-progress").style.opacity = "0";
     });
@@ -420,10 +440,10 @@
     // Setup the buttons for all transfers
     // The "add files" button doesn't need to be setup because the config
     // `clickable` has already been specified.
-    document.querySelector("#actions .start").onclick = function() {
+    document.querySelector("#actions .start").onclick = function () {
         myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
     };
-    document.querySelector("#actions .cancel").onclick = function() {
+    document.querySelector("#actions .cancel").onclick = function () {
         myDropzone.removeAllFiles(true);
     };
 
