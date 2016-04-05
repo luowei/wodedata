@@ -60,6 +60,9 @@ public class Topic implements java.io.Serializable {
 	@JsonIgnore
 	private Set<UpFileInfo> upFileInfos = new HashSet<UpFileInfo>(0);
 
+	private String preImage;
+	private String preAudio;
+
 	public Topic() {
 	}
 
@@ -275,4 +278,23 @@ public class Topic implements java.io.Serializable {
 	public void setUpFileInfos(Set<UpFileInfo> upFileInfos) {
 		this.upFileInfos = upFileInfos;
 	}
+
+	@Column(name = "preImage")
+	public String getPreImage() {
+		return preImage;
+	}
+
+	public void setPreImage(String preImage) {
+		this.preImage = preImage;
+	}
+
+	@Column(name = "preAudio")
+	public String getPreAudio() {
+		return preAudio;
+	}
+
+	public void setPreAudio(String preAudio) {
+		this.preAudio = preAudio;
+	}
+
 }

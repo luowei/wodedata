@@ -35,102 +35,132 @@
                 <div class="panel-heading">创建</div>
                 <div class="panel-body">
                     <form role="form" action="${x}/topics/save" method="POST" data-toggle="validator">
-                            <%--分类 及 结点--%>
+                        <%--分类 及 结点--%>
                         <div class="form-group">
                             <label class="control-label">定位</label>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">分类</span>
-                                        <select class="form-control" id="section">
-                                            <option value=""> -- -- </option>
-                                        <c:forEach items="${sections}" var="section">
-                                            <option value="${section.name}">${section.name}</option>
-                                        </c:forEach>
+                                        <select class="form-control" name = sectionId id="sectionId">
+                                            <option value=""> -- --</option>
+                                            <c:forEach items="${sections}" var="section">
+                                                <option value="${section.id}">${section.name}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">节点</span>
-                                        <select class="form-control" id="topicNodeName" name="topicNodeName">
-                                            <option value="Spring Framework"> -- --  </option>
+                                        <select class="form-control" id="nodeId" name="nodeId">
+                                            <option value="Spring Framework"> -- --</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                            <%--标题--%>
+                        <%--标题--%>
                         <div class="form-group">
                             <label>标题</label>
                             <input name="title" data-minlength="6" data-error="标题至少六个字" id="title" class="form-control">
                             <div class="help-block with-errors"></div>
                         </div>
 
-                            <%--图片--%>
-                        <div class="form-group">
-                            <label>图片</label>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div id="upload-image-preview-template" style="display: none;">
-                                        <input name = "preImage" type="hidden" value=""/>
-                                        <a href="#" class="thumbnail">
-                                            <img src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png" alt="通用的占位符缩略图">
-                                        </a>
+                        <%--图片--%>
+                        <div id="image-upload" class="panel panel-default form-group container-fluid">
+                            <div class="panel-heading row">
+                                <h3 class="panel-title">图片</h3>
+                            </div>
+
+                            <div class="panel-body row-fluid">
+                                <input id="preImage" name="preImage" type="hidden" value=""/>
+                                <div id="image-previews" class="files col-md-6 col-xs-12 text-center">
+                                    <div id="image-template" class="file-row row-fluid">
+                                        <div class="col-xs-6 col-md-6">
+                                            <span class="preview">
+                                                <img data-dz-thumbnail
+                                                     src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png"/>
+                                            </span>
+                                            <p data-dz-name class="name"></p>
+                                        </div>
+                                        <div class="col-xs-6 col-md-6">
+                                            <p data-dz-size class="size"></p>
+                                            <div class="progress progress-striped active" role="progressbar"
+                                                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                <div class="progress-bar progress-bar-success" style="width:0%;"
+                                                     data-dz-uploadprogress></div>
+                                            </div>
+                                            <strong data-dz-errormessage class="error text-danger"></strong>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="image-actions" class="col-md-10">
-                                    <!-- The fileinput-button span is used to style the file input field as button -->
-                                        <span class="btn btn-success fileinput-button dz-clickable">
-                                            <i class="glyphicon glyphicon-plus"></i>
-                                            <span>添加文件</span>
-                                        </span>
-                                    <button type="submit" class="btn btn-primary start">
+                                <div id="imageActions" class="col-md-6 col-xs-12 text-center">
+                                    <span class="btn btn-success dz-clickable fileinput-button">
                                         <i class="glyphicon glyphicon-upload"></i>
-                                        <span>开始上传</span>
-                                    </button>
-                                    <button type="reset" class="btn btn-warning cancel">
-                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span>取消上传</span>
-                                    </button>
+                                        <span>选择</span>
+                                    </span>
+                                    <span class="btn btn-primary dz-clickable start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>上传</span>
+                                    </span>
+                                    <span data-dz-remove class="btn btn-danger dz-clickable delete">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>删除</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <%--音频--%>
+                            <div id="audio-upload" class="panel panel-default form-group container-fluid">
+                                <div class="panel-heading row">
+                                    <h3 class="panel-title">音频</h3>
+                                </div>
+
+                                <div class="panel-body row-fluid">
+                                    <input id="preAudio" name="preAudio" type="hidden" value=""/>
+                                    <div id="audio-previews" class="files col-md-6 col-xs-12 text-center">
+                                        <div id="audio-template" class="file-row row-fluid">
+                                            <div class="col-xs-6 col-md-6">
+                                            <span class="preview">
+                                                <img data-dz-thumbnail
+                                                     src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png"/>
+                                            </span>
+                                                <p data-dz-name class="name"></p>
+                                            </div>
+                                            <div class="col-xs-6 col-md-6">
+                                                <p data-dz-size class="size"></p>
+                                                <div class="progress progress-striped active" role="progressbar"
+                                                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success" style="width:0%;"
+                                                         data-dz-uploadprogress></div>
+                                                </div>
+                                                <strong data-dz-errormessage class="error text-danger"></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="audioActions" class="col-md-6 col-xs-12 text-center">
+                                        <span class="btn btn-success dz-clickable fileinput-button">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span>选择</span>
+                                        </span>
+                                        <span class="btn btn-primary dz-clickable start">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span>上传</span>
+                                        </span>
+                                        <span data-dz-remove class="btn btn-danger dz-clickable delete">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                            <span>删除</span>
+                                        </span>
+                                    </div>
                                 </div>
 
                             </div>
-                        </div>
 
-                            <%--音频--%>
-                        <div class="form-group">
-                            <label>音频</label>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div id="upload-audio-preview-template" style="display: none;">
-                                        <input name = "preAudio" type="hidden" value=""/>
-                                        <a href="#" class="thumbnail">
-                                            <img src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png" alt="通用的占位符缩略图">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div id="audio-actions" class="col-md-10">
-                                    <!-- The fileinput-button span is used to style the file input field as button -->
-                                        <span class="btn btn-success fileinput-button dz-clickable">
-                                            <i class="glyphicon glyphicon-plus"></i>
-                                            <span>添加文件</span>
-                                        </span>
-                                    <button type="submit" class="btn btn-primary start">
-                                        <i class="glyphicon glyphicon-upload"></i>
-                                        <span>开始上传</span>
-                                    </button>
-                                    <button type="reset" class="btn btn-warning cancel">
-                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span>取消上传</span>
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                            <%--正文--%>
+                        <%--正文--%>
                         <div class="form-group">
                             <label>正文</label>
 
@@ -147,14 +177,14 @@
                             <div class="help-block with-errors"></div>
                         </div>
 
-                            <%--标签--%>
+                        <%--标签--%>
                         <div class="form-group">
                             <label>标签</label>
                             <input class="form-control" disabled="disabled" placeholder="为什么填不了？因为这个多标签功能还没有做，按节点分吧">
                             <div class="help-block with-errors"></div>
                         </div>
 
-                            <%--发送--%>
+                        <%--发送--%>
                         <div class="btn-group">
                             <button type="submit" class="btn btn-info">
                                 发 送
@@ -179,29 +209,29 @@
 <script type="text/javascript">
 
     //设置分类的select
-    $("#section").on("change", function (e) {
-        var sectionName = $("#section").val();
-        setupNodeSel(sectionName);
+    $("#sectionId").on("change", function (e) {
+        var sectionId = $("#sectionId").val();
+        setupNodeSel(sectionId);
     });
-    function setupNodeSel(sectionName){
-        if(sectionName == ""){
-            $("#topicNodeName").html("<option value=''> -- -- </option>");
-            return ;
+    function setupNodeSel(sectionId) {
+        if (sectionId == "") {
+            $("#nodeId").html("<option value=''> -- -- </option>");
+            return;
         }
 
-        var url = "${x}/nodes/list/" + sectionName;
-        $.getJSON(url, function (nodeNames) {
+        var url = "${x}/nodes/listBySectionId/" + sectionId;
+        $.getJSON(url, function (nodes) {
             var optionStr = "";
-            for (var i = 0; i < nodeNames.length; i++) {
+            for (var i = 0; i < nodes.length; i++) {
                 var selectedName = '${topic.node.name}';
                 var selected = "";
-                if(selectedName == nodeNames[i]){
+                if (selectedName == nodes[i].name) {
                     selected = " selected ";
                 }
-                optionStr += "<option "+selected+">" + nodeNames[i] + "</option>";
+                optionStr += "<option " + selected + "value="+nodes[i].id+">" + nodes[i].name + "</option>";
             }
             console.log(optionStr);
-            $("#topicNodeName").html(optionStr);
+            $("#nodeId").html(optionStr);
         });
     }
 
@@ -211,6 +241,256 @@
         console.log(content);
         var content_marked = marked(content);
         $("#preview-body").html(content_marked);
+    });
+
+    //图片上传
+    var imagePreviewNode = document.querySelector("#image-template");
+    imagePreviewNode.id = "";
+    var imagePreviewTemplate = imagePreviewNode.parentNode.innerHTML;
+    imagePreviewNode.parentNode.removeChild(imagePreviewNode);
+
+    var imageDropzone = new Dropzone("#image-upload", { // Make the whole body a dropzone
+        url: "${x}/back/content/upfile/upload",
+        maxFiles: 1,
+        maxFilesize: 5120,
+        acceptedFiles: "image/*",
+
+        thumbnailWidth: 80,
+        thumbnailHeight: 80,
+        parallelUploads: 20,
+        previewTemplate: imagePreviewTemplate,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#image-previews", // Define the container to display the previews
+        clickable: "#imageActions .fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+    imageDropzone.on("addedfile", function (file) {
+        console.log("addedfile called ....");
+        if (imageDropzone.files.length > 1) {
+            imageDropzone.removeFile(this.files[0]);
+        }
+        // Hookup the start button
+        var startNode = document.querySelector("#imageActions .start");
+        startNode.onclick = function () {
+            imageDropzone.enqueueFile(file);
+        };
+        startNode.removeAttribute("disabled");
+        file.previewElement.querySelector(".progress-bar").style.opacity = "1";
+    });
+
+    imageDropzone.on("maxfilesexceeded", function (file) {
+        imageDropzone.removeAllFiles();
+        imageDropzone.addFile(file);
+    });
+
+    document.querySelector("#imageActions .delete").onclick = function () {
+        imageDropzone.removeAllFiles(true);
+    };
+
+    imageDropzone.on("sending", function (file, xhr, formData) {
+        console.log("sending called ....");
+        // And disable the start button
+        document.querySelector("#imageActions .start").setAttribute("disabled", "disabled");
+    });
+
+    imageDropzone.on("processing", function (file) {
+        console.log("processing called ....")
+        var section = $('#sectionId').find('option:selected').val();
+        var node = $('#nodeId').find('option:selected').val();
+        var topic = $('#topic').find('option:selected').val();
+
+        var params = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            sectionId: section,
+            nodeId: node,
+            topicId: topic
+        };
+        imageDropzone.options.url = "${x}/back/content/upfile/upload?" + $.param(params);
+    });
+
+    //单个文件上传进度
+    imageDropzone.on("uploadprogress", function (file, progress, bytesSend) {
+//        console.log("uploadprogress called .... progress:"+progress+"   bytesSend:"+bytesSend);
+        file.previewElement.querySelector(".progress-bar").style.width = progress + "%";
+    });
+
+
+    //完成上传
+    imageDropzone.on("complete", function () {
+
+    });
+
+    //文件上传成功
+    imageDropzone.on("success", function (file, response) {
+        console.log("success called ....");
+
+        if (response != null || response != "" || response != "null") {
+            file.key = response.key;
+            file.url = response.url;
+            file.hash = response.hash;
+
+//            document.querySelector("#preImage").value = response.url;
+            document.getElementById("preImage").value = response.url;
+
+            var progressBar = file.previewElement.querySelector(".progress");
+            var parentNode = progressBar.parentNode;
+
+            $(progressBar).remove();
+            $(parentNode).append("<span class='label label-success'>上传成功</span>");
+
+        }
+    });
+
+    //移除文件
+    imageDropzone.on("removedfile", function (file) {
+        console.log("removedfile called ....");
+        if (file.key == null || file.key == undefined) {
+            return;
+        }
+
+        var jsonData = JSON.stringify({key: file.key, url: file.url, hash: file.hash});
+        //保存上传的文件信息
+        $.ajax({
+            url: '${x}/uploadFile/removeFile',
+            type: "post",
+            data: jsonData,
+            cache: false,
+            async: false,    //同步
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (dat) {
+                console.log(dat);
+            }
+        });
+
+    });
+
+    //------------------
+
+    //音频上传
+    var audioPreviewNode = document.querySelector("#audio-template");
+    audioPreviewNode.id = "";
+    var audioPreviewTemplate = audioPreviewNode.parentNode.innerHTML;
+    audioPreviewNode.parentNode.removeChild(audioPreviewNode);
+
+    var audioDropzone = new Dropzone("#audio-upload", { // Make the whole body a dropzone
+        url: "${x}/back/content/upfile/upload",
+        maxFiles: 1,
+        maxFilesize: 51200,
+        acceptedFiles: "audio/*",
+
+        thumbnailWidth: 80,
+        thumbnailHeight: 80,
+        parallelUploads: 20,
+        previewTemplate: audioPreviewTemplate,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#audio-previews", // Define the container to display the previews
+        clickable: "#audioActions .fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+    audioDropzone.on("addedfile", function (file) {
+        console.log("addedfile called ....");
+        if (audioDropzone.files.length > 1) {
+            audioDropzone.removeFile(this.files[0]);
+        }
+        // Hookup the start button
+        var startNode = document.querySelector("#audioActions .start");
+        startNode.onclick = function () {
+            audioDropzone.enqueueFile(file);
+        };
+        startNode.removeAttribute("disabled");
+        file.previewElement.querySelector(".progress-bar").style.opacity = "1";
+    });
+
+    audioDropzone.on("maxfilesexceeded", function (file) {
+        audioDropzone.removeAllFiles();
+        audioDropzone.addFile(file);
+    });
+
+    document.querySelector("#audioActions .delete").onclick = function () {
+        audioDropzone.removeAllFiles(true);
+    };
+
+    audioDropzone.on("sending", function (file, xhr, formData) {
+        console.log("sending called ....");
+        // And disable the start button
+        document.querySelector("#audioActions .start").setAttribute("disabled", "disabled");
+    });
+
+    audioDropzone.on("processing", function (file) {
+        console.log("processing called ....")
+        var section = $('#sectionId').find('option:selected').val();
+        var node = $('#nodeId').find('option:selected').val();
+        var topic = $('#topic').find('option:selected').val();
+
+        var params = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            sectionId: section,
+            nodeId: node,
+            topicId: topic
+        };
+        audioDropzone.options.url = "${x}/back/content/upfile/upload?" + $.param(params);
+    });
+
+    //单个文件上传进度
+    audioDropzone.on("uploadprogress", function (file, progress, bytesSend) {
+//        console.log("uploadprogress called .... progress:"+progress+"   bytesSend:"+bytesSend);
+        file.previewElement.querySelector(".progress-bar").style.width = progress + "%";
+    });
+
+
+    //完成上传
+    audioDropzone.on("complete", function () {
+
+    });
+
+    //文件上传成功
+    audioDropzone.on("success", function (file, response) {
+        console.log("success called ....");
+
+        if (response != null || response != "" || response != "null") {
+            file.key = response.key;
+            file.url = response.url;
+            file.hash = response.hash;
+
+//            document.querySelector("#preAudio").value = response.url;
+            document.getElementById("preAudio").value = response.url;
+
+            var progressBar = file.previewElement.querySelector(".progress");
+            var parentNode = progressBar.parentNode;
+
+            $(progressBar).remove();
+            $(parentNode).append("<span class='label label-success'>上传成功</span>");
+
+        }
+    });
+
+    //移除文件
+    audioDropzone.on("removedfile", function (file) {
+        console.log("removedfile called ....");
+        if (file.key == null || file.key == undefined) {
+            return;
+        }
+
+        var jsonData = JSON.stringify({key: file.key, url: file.url, hash: file.hash});
+        //保存上传的文件信息
+        $.ajax({
+            url: '${x}/uploadFile/removeFile',
+            type: "post",
+            data: jsonData,
+            cache: false,
+            async: false,    //同步
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (dat) {
+                console.log(dat);
+            }
+        });
+
     });
 
 

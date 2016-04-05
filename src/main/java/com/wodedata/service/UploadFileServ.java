@@ -2,6 +2,7 @@ package com.wodedata.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import com.wodedata.domin.UpFileInfo;
@@ -58,5 +59,10 @@ public class UploadFileServ {
 	public void removeFile(String fileKey) {
 		qiniu.deleteFileByKey(fileKey);
 		upFileRepo.deleteByKey(fileKey);
+	}
+
+	public UpFileInfo findByUrl(String preImageUrl) {
+		List<UpFileInfo> list = upFileRepo.findByUrlOrderByIdDesc(preImageUrl);
+		return list.size() > 0 ? list.get(0) :null;
 	}
 }

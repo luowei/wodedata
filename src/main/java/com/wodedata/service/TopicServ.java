@@ -198,13 +198,13 @@ public class TopicServ {
 	 * 输入已有的节点保存话题
 	 * 
 	 * @param topic
-	 * @param nodeName
+	 * @param nodeId
 	 * @param user
 	 * @return
 	 */
 	@Transactional
-	public Topic save(Topic topic, String nodeName, User user) {
-		Node node = nodeRepo.findByName(nodeName);
+	public Topic save(Topic topic, Integer nodeId, User user) {
+		Node node = nodeRepo.findOne(nodeId);
 		if (node == null) {
 			return null;
 		}

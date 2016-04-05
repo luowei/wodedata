@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wodedata.domin.*;
+import com.wodedata.service.*;
 import com.wodedata.web.helper.ReadData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,12 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.wodedata.service.CollectionServ;
-import com.wodedata.service.CommentServ;
-import com.wodedata.service.NodeServ;
-import com.wodedata.service.SectionServ;
-import com.wodedata.service.TopicServ;
 
 @Controller
 @RequestMapping("/topics")
@@ -44,6 +39,9 @@ public class TopicC {
 
 	@Autowired
 	private CommentServ commentServ;
+
+	@Autowired
+	private UploadFileServ uploadFileServ;
 
 	/**
 	 * 不能匹配话题，值作为显示话题公告使用
@@ -123,7 +121,7 @@ public class TopicC {
 	 * @return
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@Validated Topic topic,Errors resutlt, String topicNodeName, RedirectAttributes redirectAttrs,
+	public String save(@Validated Topic topic,String sectionId, String nodeId,Errors resutlt, RedirectAttributes redirectAttrs,
 			HttpServletRequest requset) {
 		User user = (User) requset.getSession().getAttribute("user");
 		if(resutlt.hasErrors()){
@@ -131,8 +129,28 @@ public class TopicC {
 			redirectAttrs.addFlashAttribute("topic",topic);
 			return "redirect:/topics/create";
 		}else{
-			topicServ.save(topic, topicNodeName, user);
-			return "redirect:/topics/" + topic.getId();
+			Topic newTopic = topicServ.save(topic, new Integer(nodeId.trim()), user);
+
+			Section section = sectionServ.findById(new Integer(sectionId.trim()));
+			Node node = nodeServ.findById(new Integer(nodeId.trim()));
+
+			//保存图片文件信息
+			UpFileInfo imageFile = uploadFileServ.findByUrl(topic.getPreImage());
+			imageFile.setSection(section);
+			imageFile.setNode(node);
+			imageFile.setTopic(newTopic);
+
+			uploadFileServ.saveFileInfo(imageFile);
+
+			//保存音频文件信息
+			UpFileInfo audioFile = uploadFileServ.findByUrl(topic.getPreAudio());
+			audioFile.setSection(section);
+			audioFile.setNode(node);
+			audioFile.setTopic(newTopic);
+
+			uploadFileServ.saveFileInfo(audioFile);
+
+			return "redirect:/topics/" + newTopic.getId();
 		}
 		
 	}

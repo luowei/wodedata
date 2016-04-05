@@ -78,7 +78,13 @@ public class NodeC {
 	public List<String> list(@PathVariable("sectionName") String sectionName){
 		return nodeServ.getNodeNameBySectionName(sectionName);
 	}
-	
+
+	@RequestMapping("/listBySectionId/{id}")
+	@ResponseBody
+	public List<Node> listById(@PathVariable("id") String sectionId){
+		return nodeServ.findBySectionId(new Integer(sectionId.trim()));
+	}
+
 	@RequestMapping("/{id}/focus")
 	@ResponseBody
 	public boolean focus(@PathVariable("id") int nodeId,HttpServletRequest request){
