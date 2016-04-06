@@ -50,7 +50,8 @@ public class TopicC {
 	 */
 	@RequestMapping("/")
 	public String index() {
-		return "/topics/show";
+//		return "forward:/";
+		return "redirect:/";
 	}
 
 	/**
