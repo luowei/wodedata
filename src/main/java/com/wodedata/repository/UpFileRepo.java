@@ -2,6 +2,7 @@ package com.wodedata.repository;
 
 import com.wodedata.domin.UpFileInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
 
@@ -10,7 +11,11 @@ import java.util.List;
  */
 public interface UpFileRepo extends JpaRepository<UpFileInfo, Integer> {
 
+    @Modifying
     void deleteByKey(String fileKey);
 
     List<UpFileInfo> findByUrlOrderByIdDesc(String url);
+
+    @Modifying
+    void deleteByUrl(String url);
 }

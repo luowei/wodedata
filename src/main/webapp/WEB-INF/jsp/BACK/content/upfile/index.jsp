@@ -65,11 +65,24 @@
                                         <c:forEach items="${files}" var="file">
                                             <tr>
                                                 <td>${file.id}</td>
-                                                <td>${file.name}</td>
                                                 <td>
-                                                    <a href="${file.url}" class="thumbnail" target="_blank">
-                                                        <img src="${file.url}" style="width:40px;height:40px;">
-                                                    </a>
+                                                    <span class="label label-default">${file.name}</span>
+                                                    <button name="copyBtn" class="btn btn-xs" data-clipboard-text="${file.url}">复制链接地址</button>
+                                                </td>
+                                                <td>
+                                                    <div class="controls">
+                                                        <c:if test="${fn:substring(file.type, 0, 5) eq 'audio'}">
+                                                            <audio controls style="width: 80%;">
+                                                                <source src="${file.url}">
+                                                            </audio>
+                                                        </c:if>
+                                                        <%--<c:if test="${fn:substring(file.type, 0, 5) eq 'image'}"></c:if>--%>
+                                                        <c:if test="${fn:substring(file.type, 0, 5) ne 'audio'}">
+                                                            <a href="${file.url}" class="thumbnail" target="_blank">
+                                                                <img src="${file.url}" style="width:40px;height:40px;">
+                                                            </a>
+                                                        </c:if>
+                                                    </div>
                                                 </td>
                                                 <td><span class="label label-default">${file.section.name}</span></td>
                                                 <td><span class="label label-default">${file.node.name}</span></td>
@@ -237,8 +250,13 @@
 <script src="${x}/js/metisMenu.min.js"></script>
 <script src="${x}/js/sb-admin-2.js"></script>
 <script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
 <%--<script src="${x}/js/uploadFile.js"></script>--%>
 <script type="text/javascript">
+
+    var btns = document.getElementsByName("copyBtn");
+    var clipboard = new Clipboard(btns);
+
     $(".btn-delete").on("click", function (e) {
         var url = $(this).attr("data-url");
         $("#modal-delete").modal('show');

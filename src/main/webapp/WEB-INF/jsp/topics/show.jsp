@@ -68,7 +68,9 @@
                         <c:if test="${not empty topic.preAudio}">
                             <li class="list-group-item">
                                 <div id="topic-preAudio">
-                                    <audio controls="controls" src="${topic.preAudio}"/>
+                                    <audio controls style="width: 100%;">
+                                        <source src="${topic.preAudio}">
+                                    </audio>
                                 </div>
                             </li>
                         </c:if>

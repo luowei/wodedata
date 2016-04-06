@@ -115,50 +115,50 @@
                         </div>
 
                         <%--音频--%>
-                            <div id="audio-upload" class="panel panel-default form-group container-fluid">
-                                <div class="panel-heading row">
-                                    <h3 class="panel-title">音频</h3>
-                                </div>
+                        <div id="audio-upload" class="panel panel-default form-group container-fluid">
+                            <div class="panel-heading row">
+                                <h3 class="panel-title">音频</h3>
+                            </div>
 
-                                <div class="panel-body row-fluid">
-                                    <input id="preAudio" name="preAudio" type="hidden" value=""/>
-                                    <div id="audio-previews" class="files col-md-6 col-xs-12 text-center">
-                                        <div id="audio-template" class="file-row row-fluid">
-                                            <div class="col-xs-6 col-md-6">
-                                            <span class="preview">
-                                                <img data-dz-thumbnail
-                                                     src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png"/>
-                                            </span>
-                                                <p data-dz-name class="name"></p>
+                            <div class="panel-body row-fluid">
+                                <input id="preAudio" name="preAudio" type="hidden" value=""/>
+                                <div id="audio-previews" class="files col-md-6 col-xs-12 text-center">
+                                    <div id="audio-template" class="file-row row-fluid">
+                                        <div class="col-xs-6 col-md-6">
+                                        <span class="preview">
+                                            <img data-dz-thumbnail
+                                                 src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/audio50x50.png"/>
+                                        </span>
+                                            <p data-dz-name class="name"></p>
+                                        </div>
+                                        <div class="col-xs-6 col-md-6">
+                                            <p data-dz-size class="size"></p>
+                                            <div class="progress progress-striped active" role="progressbar"
+                                                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                <div class="progress-bar progress-bar-success" style="width:0%;"
+                                                     data-dz-uploadprogress></div>
                                             </div>
-                                            <div class="col-xs-6 col-md-6">
-                                                <p data-dz-size class="size"></p>
-                                                <div class="progress progress-striped active" role="progressbar"
-                                                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                    <div class="progress-bar progress-bar-success" style="width:0%;"
-                                                         data-dz-uploadprogress></div>
-                                                </div>
-                                                <strong data-dz-errormessage class="error text-danger"></strong>
-                                            </div>
+                                            <strong data-dz-errormessage class="error text-danger"></strong>
                                         </div>
                                     </div>
-                                    <div id="audioActions" class="col-md-6 col-xs-12 text-center">
-                                        <span class="btn btn-success dz-clickable fileinput-button">
-                                            <i class="glyphicon glyphicon-upload"></i>
-                                            <span>选择</span>
-                                        </span>
-                                        <span class="btn btn-primary dz-clickable start">
-                                            <i class="glyphicon glyphicon-upload"></i>
-                                            <span>上传</span>
-                                        </span>
-                                        <span data-dz-remove class="btn btn-danger dz-clickable delete">
-                                            <i class="glyphicon glyphicon-trash"></i>
-                                            <span>删除</span>
-                                        </span>
-                                    </div>
                                 </div>
-
+                                <div id="audioActions" class="col-md-6 col-xs-12 text-center">
+                                    <span class="btn btn-success dz-clickable fileinput-button">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>选择</span>
+                                    </span>
+                                    <span class="btn btn-primary dz-clickable start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>上传</span>
+                                    </span>
+                                    <span data-dz-remove class="btn btn-danger dz-clickable delete">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>删除</span>
+                                    </span>
+                                </div>
                             </div>
+
+                        </div>
 
                         <%--正文--%>
                         <div class="form-group">

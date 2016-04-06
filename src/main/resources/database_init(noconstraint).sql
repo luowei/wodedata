@@ -1,25 +1,19 @@
 /*
- Navicat Premium Data Transfer
+ Navicat MySQL Data Transfer
 
- Source Server         : mysql
- Source Server Type    : MySQL
- Source Server Version : 50711
+ Source Server         : localhost_mysql
+ Source Server Version : 50163
  Source Host           : localhost
  Source Database       : lidongchengsay
 
- Target Server Type    : MySQL
- Target Server Version : 50711
+ Target Server Version : 50163
  File Encoding         : utf-8
 
- Date: 04/06/2016 03:24:25 AM
+ Date: 04/06/2016 17:34:10 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- 导出 lidongchengsay 的数据库结构
-CREATE DATABASE IF NOT EXISTS `lidongchengsay` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `lidongchengsay`;
 
 -- ----------------------------
 --  Table structure for `collection`
@@ -249,7 +243,7 @@ CREATE TABLE `topic` (
 --  Records of `topic`
 -- ----------------------------
 BEGIN;
-INSERT INTO `topic` VALUES ('1', null, '0', '李东成说毛时代第1集', '2016-03-20 21:36:11', null, null, null, '0', '0', '0', '李东成说毛时代第1集', null, '32', '1', '1', null, null), ('19', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-03-28 14:15:22', null, null, null, '0', '0', '0', 'aaabbbcccdddeeefffggghhhiiijjjkkkmmmnnnllloooppp', null, '6', '25', '1', null, null), ('20', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)\r\n\r\n![2016-03-28-89ec1689-63ec-4d93-b00f-9d22c981a200](http://7xrzeb.com1.z0.glb.clouddn.com/2016-03-28-89ec1689-63ec-4d93-b00f-9d22c981a200)\r\n\r\n![2016-03-28-bacd5bf5-a2f6-403d-88e3-245970b99491](http://7xrzeb.com1.z0.glb.clouddn.com/2016-03-28-bacd5bf5-a2f6-403d-88e3-245970b99491)\r\n\r\n**音频**\r\n[摇滚音乐](http://7xrzeb.com1.z0.glb.clouddn.com/2016-03-28-e810a4c1-ba4d-4b41-aa9f-f5904a47aa98)', '2016-03-28 15:10:43', null, null, null, '0', '0', '0', '上传文件测试....', null, '20', '25', '1', null, null), ('21', null, '1', '# 好用的App有很多\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n![2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723](http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723)\r\n\r\n\r\n\r\n', '2016-04-04 23:42:06', null, null, null, '0', '0', '0', '好用的App有很多....', null, '3', '26', '1', null, null), ('22', null, '0', '# 整风运动的风和雨\r\n----------\r\n\r\n## 整风运动的风和雨 ##\r\n\r\n```\r\n整风运动的风和雨\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-04-06 02:27:55', null, null, null, '0', '0', '0', '整风运动的风和雨', null, '1', '1', '1', 'undefined', 'undefined'), ('23', null, '0', '# 潜伏下的军统蛮有意思的\r\n----------\r\n\r\n## 潜伏下的军统蛮有意思的。。。。 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-04-06 03:21:23', null, null, null, '0', '0', '0', '潜伏下的军统蛮有意思的', null, '1', '2', '1', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-7e0d3e47-fbc4-4eb0-ae15-39ac9cc216fd', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-8858c019-44aa-40da-90c6-f942a9b7d23c');
+INSERT INTO `topic` VALUES ('1', null, '0', '李东成说毛时代第1集', '2016-03-20 21:36:11', null, null, null, '0', '0', '0', '李东成说毛时代第1集', null, '32', '1', '1', null, null), ('19', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-03-28 14:15:22', null, null, null, '0', '0', '0', 'aaabbbcccdddeeefffggghhhiiijjjkkkmmmnnnllloooppp', null, '7', '25', '1', null, null), ('20', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\naaaaaaaaaaaa\r\n\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n                     \r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', '2016-03-28 15:10:43', null, null, null, '0', '0', '0', '上传文件测试....', null, '42', '25', '1', null, null), ('21', null, '1', '# 好用的App有很多\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n![2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723](http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723)\r\n\r\n\r\n\r\n', '2016-04-04 23:42:06', null, null, null, '0', '0', '0', '好用的App有很多....', null, '3', '26', '1', null, null), ('22', null, '0', '# 整风运动的风和雨\r\n----------\r\n\r\n## 整风运动的风和雨 ##\r\n\r\n```\r\n整风运动的风和雨\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-04-06 02:27:55', null, null, null, '0', '0', '0', '整风运动的风和雨', null, '1', '1', '1', 'undefined', 'undefined'), ('23', null, '0', '# 潜伏下的军统蛮有意思的\r\n----------\r\n新修改了图片和音频。。。\r\n再修改了图片和音频。。。\r\n\r\n## 潜伏下的军统蛮有意思的。。。。 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n', '2016-04-06 03:21:23', null, null, null, '0', '0', '0', '潜伏下的军统蛮有意思的', null, '51', '2', '1', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-b344ac89-692b-46ef-9e0b-b1707c48725c', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-c8c269e5-253c-4e2e-8bbc-bb1815ca9779');
 COMMIT;
 
 -- ----------------------------
@@ -269,13 +263,13 @@ CREATE TABLE `up_fileinfo` (
   `node_id` int(11) DEFAULT NULL,
   `topic_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `up_fileinfo`
 -- ----------------------------
 BEGIN;
-INSERT INTO `up_fileinfo` VALUES ('89', '图片虚化处理.png', 'image/png', '266142', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-7e0d3e47-fbc4-4eb0-ae15-39ac9cc216fd', '2016-04-06-7e0d3e47-fbc4-4eb0-ae15-39ac9cc216fd', 'Fr76UcQBlQT9x_P-T7_jceUvVKYI', '2016-04-06 03:21:34', '1', '2', '23'), ('90', '2004 (两个人烟火).mp3', 'audio/mp3', '3366115', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-8858c019-44aa-40da-90c6-f942a9b7d23c', '2016-04-06-8858c019-44aa-40da-90c6-f942a9b7d23c', 'Fgg7xNEaFUWw0T_RtPxrSYQm0UzY', '2016-04-06 03:22:00', '1', '2', '23');
+INSERT INTO `up_fileinfo` VALUES ('99', 'ABirdInAHeavyStorm.jpg', 'image/jpeg', '373270', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-b344ac89-692b-46ef-9e0b-b1707c48725c', '2016-04-06-b344ac89-692b-46ef-9e0b-b1707c48725c', 'Fo_3GRZpFklubvBfoVIv3uK_Zrga', '2016-04-06 17:30:40', '1', '2', '23'), ('100', 'WantASingle.mp3', 'audio/mp3', '3193246', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-c8c269e5-253c-4e2e-8bbc-bb1815ca9779', '2016-04-06-c8c269e5-253c-4e2e-8bbc-bb1815ca9779', 'FvKz0_ybgyUST_CTxb8hCl2zzedc', '2016-04-06 17:32:21', '1', '2', '23');
 COMMIT;
 
 -- ----------------------------

@@ -65,4 +65,11 @@ public class UploadFileServ {
 		List<UpFileInfo> list = upFileRepo.findByUrlOrderByIdDesc(preImageUrl);
 		return list.size() > 0 ? list.get(0) :null;
 	}
+
+	//根据url删除记录
+	@Transactional
+	public void deleteByUrl(String url) {
+		qiniu.deleteFileByUrl(url.trim());
+		upFileRepo.deleteByUrl(url.trim());
+	}
 }

@@ -61,7 +61,7 @@ public class Qiniu {
 
 
     //根据文件的key删除文件
-    public void deleteFileByKey(String fileKey){
+    public void deleteFileByKey(String fileKey) {
         try {
             //调用delete方法移动文件
             bucketManager.delete(space, fileKey);
@@ -78,6 +78,12 @@ public class Qiniu {
 
     public void setUploadManager(UploadManager uploadManager) {
         this.uploadManager = uploadManager;
+    }
+
+    public void deleteFileByUrl(String url) {
+        String preUrl = "http://" + this.domain + "/";
+        String key = url.substring(preUrl.length(), url.length() - 1);
+        this.deleteFileByKey(key);
     }
 
     /**
