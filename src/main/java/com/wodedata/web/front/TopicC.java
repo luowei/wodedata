@@ -176,7 +176,7 @@ public class TopicC {
 	 */
 	@RequestMapping("/update")
 	public String update(@Validated @ModelAttribute Topic topic,
-			Errors error,String topicSectionName,String topicNodeName,
+						 String sectionId, String nodeId,Errors error,
 			Model model,
 			RedirectAttributes attributes){
 		
@@ -184,13 +184,12 @@ public class TopicC {
 			model.addAttribute("error",error.getAllErrors());
 			return "/topics/edit";
 		}else{
-//			Section section = sectionServ.getByName(topicSectionName);
-			Node node=nodeServ.getByname(topicNodeName);
-//			node.setSection(section);
+			Node node=nodeServ.findById(new Integer(nodeId.trim()));
 			topic.setNode(node);
-			topicServ.update(topic);
+
+			Topic newTopic = topicServ.update(topic);
 			attributes.addFlashAttribute("msg","话题已更新");
-			attributes.addFlashAttribute("topic",topicServ.update(topic));
+			attributes.addFlashAttribute("topic",newTopic);
 			return "redirect:/topics/"+topic.getId();
 		}
 	}

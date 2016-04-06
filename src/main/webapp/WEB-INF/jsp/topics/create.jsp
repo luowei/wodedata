@@ -208,7 +208,7 @@
 <script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
 
-    //设置分类的select
+    //设置结点的select
     $("#sectionId").on("change", function (e) {
         var sectionId = $("#sectionId").val();
         setupNodeSel(sectionId);

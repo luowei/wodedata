@@ -53,16 +53,26 @@
                     </div>
                 </div>
 
-                    <%--面板体:正文--%>
-                <div class="panel-body" >
+                <%--面板体:正文--%>
+                <div class="panel-body">
 
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <div id="topic-preImage"><img class="img-responsive img-rounded" src="${topic.preImage}"/></div>
-                        </li>
-                        <li class="list-group-item">
-                            <div id="topic-preAudio"><audio controls="controls" src="${topic.preAudio}"/> </div>
-                        </li>
+                        <c:if test="${not empty topic.preImage}">
+                            <li class="list-group-item">
+                                <div id="topic-preImage">
+                                    <img class="img-responsive img-rounded" src="${topic.preImage}"/>
+                                </div>
+                            </li>
+                        </c:if>
+
+                        <c:if test="${not empty topic.preAudio}">
+                            <li class="list-group-item">
+                                <div id="topic-preAudio">
+                                    <audio controls="controls" src="${topic.preAudio}"/>
+                                </div>
+                            </li>
+                        </c:if>
+
                         <li class="list-group-item">
                             <div id="topic-content">${topic.content}</div>
                         </li>
@@ -70,7 +80,7 @@
 
                 </div>
 
-                    <%--面板脚:编辑删除标记--%>
+                <%--面板脚:编辑删除标记--%>
                 <div class="panel-footer ">
                     <div class="btu-group ">
                         <button class="btn btn-info btn-sm fa-bookmark fa" id="btn-collect"><c:if

@@ -24,35 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="upload" tabindex="-1" role="dialog"
-         aria-labelledby="upload">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">上传</h4>
-                </div>
-                <div class="modal-body" id="upload-body">
-                    <form action="${x}/uploadFile/upload" class="dropzone" id="dropzone"></form>
-                    <div class="media">
-                        <div class="media-body">
-                            <img alt="" src="" style="max-height: 640px; width: auto"
-                                 id="file-preview">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="upload-file">上传</button>
-                    <button type="button" class="btn btn-info" id="btn-insert"
-                            data-dismiss="modal">完成
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-md-9">
             <ol class="breadcrumb">
@@ -73,25 +45,26 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">分类</span>
-                                        <select class="form-control" id="topicSectionName" name="topicSectionName">
-                                        <c:forEach items="${sections}" var="section">
-                                            <option value="${section.name}">${section.name}</option>
-                                        </c:forEach>
+                                        <select class="form-control" name="sectionId" id="sectionId">
+                                            <c:forEach items="${sections}" var="section">
+                                                <option value="${section.id}" <c:if test="${topic.node.section.id eq section.id}"> selected </c:if> >${section.name}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">节点</span>
-                                        <select class="form-control" id="topicNodeName" name="topicNodeName">
-                                            <option value="${topic.node.name}">${topic.node.name}</option>
+                                        <select class="form-control" name="nodeId" id="nodeId">
+                                            <option value="${topic.node.id}">${topic.node.name}</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>标题</label> <input name="title" data-minlength="6" data-error="标题至少六个字" id="title"
+                            <label>标题</label>
+                            <input name="title" data-minlength="6" data-error="标题至少六个字" id="title"
                                                      class="form-control" value="${topic.title}">
 
                             <div class="help-block with-errors"></div>
@@ -104,18 +77,17 @@
                                         style="border-right-width: 2px; border-right-color: #555;"
                                         data-toggle="modal" data-target="#preview">预览
                                 </button>
-                                <button type="button" id="btn-upload" class="btn btn-info"
-                                        data-toggle="modal" data-target="#upload">上传
-                                </button>
                             </div>
-                            <textarea rows="30" class="form-control" name="content"
-                                      id="content" data-minlength="6" data-error="正文不少于六个字">${topic.content}</textarea>
+                            <textarea rows="30" class="form-control" name="content" id="content" data-minlength="6"
+                                      data-error="正文不少于六个字">${topic.content}</textarea>
+
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label>标签</label>
                             <input placeholder="为什么填不了？因为这个多标签功能还没有做，按节点分吧"
-                                                     class="form-control" disabled="disabled">
+                                   class="form-control" disabled="disabled">
+
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="btn-group">
@@ -136,45 +108,30 @@
 <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
 <script src="//cdn.bootcss.com/dropzone/4.2.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
-    $("#topicSectionName").on("change", function (e) {
-        var sectionName = $("#section").val();
-        var url = "${x}/nodes/list/" + sectionName;
-        $.getJSON(url, function (nodeNames) {
-            var nodeNamesStr = "";
-            for (var i = 0; i < nodeNames.length; i++) {
-                nodeNamesStr += "<option>" + nodeNames[i] + "</option>";
-            }
-            console.log(nodeNamesStr);
-            $("#topicNodeName").html(nodeNamesStr);
-        });
-
+    //设置结点的select
+    $("#sectionId").on("change", function (e) {
+        var sectionId = $("#sectionId").val();
+        setupNodeSel(sectionId);
     });
-
-    $(function(){
-        //设置结点select
-        var sectionName = '${topic.node.section.name}';
-        setupNodeSel(sectionName);
-    });
-
-    function setupNodeSel(sectionName){
-        if(sectionName == ""){
-            $("#topicNodeName").html("<option value=''> -- -- </option>");
-            return ;
+    function setupNodeSel(sectionId) {
+        if (sectionId == "") {
+            $("#nodeId").html("<option value=''> -- -- </option>");
+            return;
         }
 
-        var url = "${x}/nodes/list/" + sectionName;
-        $.getJSON(url, function (nodeNames) {
+        var url = "${x}/nodes/listBySectionId/" + sectionId;
+        $.getJSON(url, function (nodes) {
             var optionStr = "";
-            for (var i = 0; i < nodeNames.length; i++) {
+            for (var i = 0; i < nodes.length; i++) {
                 var selectedName = '${topic.node.name}';
                 var selected = "";
-                if(selectedName == nodeNames[i]){
+                if (selectedName == nodes[i].name) {
                     selected = " selected ";
                 }
-                optionStr += "<option "+selected+">" + nodeNames[i] + "</option>";
+                optionStr += "<option " + selected + "value="+nodes[i].id+">" + nodes[i].name + "</option>";
             }
             console.log(optionStr);
-            $("#topicNodeName").html(optionStr);
+            $("#nodeId").html(optionStr);
         });
     }
 
@@ -185,105 +142,8 @@
         $("#preview-body").html(content_marked);
     });
 
-    Dropzone.options.dropzone = {
-        url: "${x}/uploadFile/upload",
-        autoProcessQueue: false,
-        addRemoveLinks: true,
-        dictRemoveLinks: "删除文件",
-        dictCancelUpload: "取消上传",
-        dictCancelUploadConfirmation: "取消上传确认",
-        dictRemoveFile: "删除文件",
-        maxFiles: 10,
-        maxFilesize: 51200,
-        acceptedFiles: "audio/*,image/*,video/*,.psd,.pdf",
-        init: function () {
-            var submitButton = document.querySelector("#upload-file");
-            dropzone = this; // closure
 
-            submitButton.addEventListener("click", function () {
-                dropzone.processQueue(); // Tell Dropzone to process all queued file.
-            });
-            this.on("success", function (file, response) {
 
-                var jsonData = JSON.stringify({name:file.name,type:file.type,size:file.size,key:response.key,url:response.url,hash:response.hash});
-                //保存上传的文件信息
-                $.ajax({
-                    url: '${x}/uploadFile/saveFileInfo',
-                    type: "post",
-                    data: jsonData,
-                    cache: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (dat) {
-                        console.log(dat);
-                        file.key = response.key;
-                        file.url = response.url;
-                        file.hash = response.hash;
-                    }
-                });
-
-                //处理返回信息
-                var url = response.url;
-                var name = response.key;
-                var btnInsert = "<button class=\"btn btn-info btn-sm btn-insert col-md-6 col-md-offset-3\""
-                        + " id=\"" + url + "\""
-                        + " type=\"button\">插入</button>";
-                var divInsert = document.createElement("div");
-                divInsert.setAttribute("class", "row");
-                divInsert.setAttribute("style", "margin-top:1em");
-                divInsert.innerHTML = btnInsert;
-                file.previewTemplate.appendChild(divInsert);
-                document.getElementById(url).onclick = function (e) {//给这个按钮添加方法
-                    url = e.srcElement.id;
-                    var textareaContent = document.getElementById("content");
-
-                    var eleStr = "";
-                    //插入音频
-                    if( file.type.indexOf("audio/")==0){
-                        eleStr = '<audio src="'+url+'" controls="controls">你的浏览器不支持音频元素</audio>';
-
-                        //插入图片
-                    }else if(file.type.indexOf("image/")==0){
-                        eleStr = "![" + name + "](" + url + ")";//md的图片元素
-
-                        //插入视频
-                    }else if(file.type.indexOf("video/")==0){
-                        eleStr = '<video src="'+url+'"  width="400" height="300" controls="controls">你的浏览器不支持视频标签</video>';
-                    }
-
-                    inserStr(textareaContent, eleStr);//光标位置插入
-                }
-            });
-            //移除文件
-            this.on("removedfile", function (file) {
-                if (file.key == null || file.key == undefined) {
-                    return;
-                }
-
-                var jsonData = JSON.stringify({key: file.key, url: file.url, hash: file.hash});
-                //保存上传的文件信息
-                $.ajax({
-                    url: '${x}/uploadFile/removeFile',
-                    type: "post",
-                    data: jsonData,
-                    cache: false,
-                    async: false,    //同步
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (dat) {
-                        console.log(dat);
-                    }
-                });
-
-            });
-            this.on("addedfile", function () {
-                console.log("add!");
-            });
-            this.on('drop', function (file) {
-//                alert('file');
-            });
-        }
-    };
 </script>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>

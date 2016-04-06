@@ -275,7 +275,9 @@ public class TopicServ {
 			oldTopic.setNode(topic.getNode());
 			oldTopic.setTitle(topic.getTitle());
 			oldTopic.setContent(topic.getContent());
-			topicRepo.save(oldTopic);
+			oldTopic.setPreImage(topic.getPreImage());
+			oldTopic.setPreAudio(topic.getPreAudio());
+			oldTopic = topicRepo.save(oldTopic);
 		}
 		return oldTopic;// 更新后的
 	}
