@@ -64,7 +64,7 @@
                         <%--标题--%>
                         <div class="form-group">
                             <label>标题</label>
-                            <input name="title" data-minlength="6" data-error="标题至少六个字" id="title" class="form-control">
+                            <input name="title" data-minlength="1" data-error="标题至少1个字" id="title" class="form-control">
                             <div class="help-block with-errors"></div>
                         </div>
 

@@ -47,7 +47,7 @@ public class Topic implements java.io.Serializable {
 	private Long score=0L;
 	private Integer status;
 	@NotNull(message="标题不能为空")
-	@Size(min=6,max=60,message="标题六到六十个字符")
+	@Size(min=1,max=60,message="标题1到60个字符")
 	private String title;
 	private Date updateAt;
 	private Long viewCount=0L;
