@@ -138,27 +138,27 @@ public class TopicC {
         } else {
             Topic newTopic = topicServ.save(topic, new Integer(nodeId.trim()), user);
 
-            Section section = sectionServ.findById(new Integer(sectionId.trim()));
-            Node node = nodeServ.findById(new Integer(nodeId.trim()));
-
-            //保存图片文件信息
-            UpFileInfo imageFile = uploadFileServ.findByUrl(topic.getPreImage());
-            if(imageFile!=null){
-                imageFile.setSection(section);
-                imageFile.setNode(node);
-                imageFile.setTopic(newTopic);
-                uploadFileServ.saveFileInfo(imageFile);
-            }
-
-            //保存音频文件信息
-            UpFileInfo audioFile = uploadFileServ.findByUrl(topic.getPreAudio());
-            if(audioFile!=null){
-                audioFile.setSection(section);
-                audioFile.setNode(node);
-                audioFile.setTopic(newTopic);
-                uploadFileServ.saveFileInfo(audioFile);
-
-            }
+//            Section section = sectionServ.findById(new Integer(sectionId.trim()));
+//            Node node = nodeServ.findById(new Integer(nodeId.trim()));
+//
+//            //保存图片文件信息
+//            UpFileInfo imageFile = uploadFileServ.findByUrl(topic.getPreImage());
+//            if(imageFile!=null){
+//                imageFile.setSection(section);
+//                imageFile.setNode(node);
+//                imageFile.setTopic(newTopic);
+//                uploadFileServ.saveFileInfo(imageFile);
+//            }
+//
+//            //保存音频文件信息
+//            UpFileInfo audioFile = uploadFileServ.findByUrl(topic.getPreAudio());
+//            if(audioFile!=null){
+//                audioFile.setSection(section);
+//                audioFile.setNode(node);
+//                audioFile.setTopic(newTopic);
+//                uploadFileServ.saveFileInfo(audioFile);
+//
+//            }
 
             return "redirect:/topics/" + newTopic.getId();
         }
@@ -210,37 +210,37 @@ public class TopicC {
             //更新topic
             Topic newTopic = topicServ.update(topic);
 
-            // ------ 处理文件信息 -----
-            //删除图片
-            if (!isNullOrEmpty(topic.getPreImage())
-                    && !isNullOrEmpty(oldTopic.getPreImage())
-                    && !topic.getPreImage().equals(oldTopic.getPreImage())) {
-                //删除旧的文件记录与文件
-                uploadFileServ.deleteByUrl(oldTopic.getPreImage());
-                //更新新的文件记录
-                UpFileInfo upFileInfo = uploadFileServ.findByUrl(topic.getPreImage());
-                if (section != null)
-                    upFileInfo.setSection(section);
-                if (node != null)
-                    upFileInfo.setNode(node);
-                upFileInfo.setTopic(newTopic);
-                uploadFileServ.saveFileInfo(upFileInfo);
-            }
-            //删除音频
-            if (!isNullOrEmpty(topic.getPreAudio())
-                    && !isNullOrEmpty(oldTopic.getPreAudio())
-                    && !topic.getPreAudio().equals(oldTopic.getPreAudio())) {
-                //删除旧的文件记录与文件
-                uploadFileServ.deleteByUrl(oldTopic.getPreAudio());
-                //更新新的文件记录
-                UpFileInfo upFileInfo = uploadFileServ.findByUrl(topic.getPreAudio());
-                if (section != null)
-                    upFileInfo.setSection(section);
-                if (node != null)
-                    upFileInfo.setNode(node);
-                upFileInfo.setTopic(newTopic);
-                uploadFileServ.saveFileInfo(upFileInfo);
-            }
+//            // ------ 处理文件信息 -----
+//            //删除图片
+//            if (!isNullOrEmpty(topic.getPreImage())
+//                    && !isNullOrEmpty(oldTopic.getPreImage())
+//                    && !topic.getPreImage().equals(oldTopic.getPreImage())) {
+//                //删除旧的文件记录与文件
+//                uploadFileServ.deleteByUrl(oldTopic.getPreImage());
+//                //更新新的文件记录
+//                UpFileInfo upFileInfo = uploadFileServ.findByUrl(topic.getPreImage());
+//                if (section != null)
+//                    upFileInfo.setSection(section);
+//                if (node != null)
+//                    upFileInfo.setNode(node);
+//                upFileInfo.setTopic(newTopic);
+//                uploadFileServ.saveFileInfo(upFileInfo);
+//            }
+//            //删除音频
+//            if (!isNullOrEmpty(topic.getPreAudio())
+//                    && !isNullOrEmpty(oldTopic.getPreAudio())
+//                    && !topic.getPreAudio().equals(oldTopic.getPreAudio())) {
+//                //删除旧的文件记录与文件
+//                uploadFileServ.deleteByUrl(oldTopic.getPreAudio());
+//                //更新新的文件记录
+//                UpFileInfo upFileInfo = uploadFileServ.findByUrl(topic.getPreAudio());
+//                if (section != null)
+//                    upFileInfo.setSection(section);
+//                if (node != null)
+//                    upFileInfo.setNode(node);
+//                upFileInfo.setTopic(newTopic);
+//                uploadFileServ.saveFileInfo(upFileInfo);
+//            }
 
             attributes.addFlashAttribute("msg", "话题已更新");
             attributes.addFlashAttribute("topic", newTopic);

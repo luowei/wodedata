@@ -79,10 +79,10 @@ public class UpFileC {
                 Node node = nodeServ.findById(new Integer(nodeId));
                 fileInfo.setNode(node);
             }
-            if(topicId != null && !"".equals(topicId)){
-                Topic topic = topicServ.findById(new Integer(topicId));
-                fileInfo.setTopic(topic);
-            }
+//            if(topicId != null && !"".equals(topicId)){
+//                Topic topic = topicServ.findById(new Integer(topicId));
+//                fileInfo.setTopic(topic);
+//            }
             uploadFileServ.saveFileInfo(fileInfo);
 
             return response;

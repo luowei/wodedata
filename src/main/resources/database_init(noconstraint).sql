@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : utf-8
 
- Date: 04/09/2016 04:39:53 AM
+ Date: 04/10/2016 05:53:31 AM
 */
 
 SET NAMES utf8;
@@ -136,7 +136,7 @@ CREATE TABLE `node` (
 --  Records of `node`
 -- ----------------------------
 BEGIN;
-INSERT INTO `node` VALUES ('1', null, '这是李东成说的毛时代', '1', '毛时代', '0', '1'), ('2', null, '李东成说之潜伏下的军统', '0', '潜伏下的军统', '0', '1'), ('3', null, '李东成说之解密中共五大野战军', '0', '五大野战军', '0', '1'), ('4', null, '李东成说之奇葩说民国', '0', '奇葩说民国', '0', '1'), ('5', null, '李东成说之晚清那些人和事', '0', '晚清那些人和事', '0', '1');
+INSERT INTO `node` VALUES ('1', null, '这是李东成说的毛时代', '4', '毛时代', '0', '1'), ('2', null, '李东成说之潜伏下的军统', '0', '潜伏下的军统', '0', '1'), ('3', null, '李东成说之解密中共五大野战军', '0', '五大野战军', '0', '1'), ('4', null, '李东成说之奇葩说民国', '0', '奇葩说民国', '0', '1'), ('5', null, '李东成说之晚清那些人和事', '0', '晚清那些人和事', '0', '1');
 COMMIT;
 
 -- ----------------------------
@@ -243,13 +243,13 @@ CREATE TABLE `topic` (
   `preImage` varchar(255) DEFAULT NULL,
   `preAudio` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `topic`
 -- ----------------------------
 BEGIN;
-INSERT INTO `topic` VALUES ('1', null, '0', '李东成说毛时代第1集', '2016-03-20 21:36:11', null, null, null, '0', '0', '2333', '李东成说毛时代第1集', null, '32', '1', '1', null, null), ('19', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-03-28 14:15:22', null, null, null, '0', '0', '2333', 'aaabbbcccdddeeefffggghhhiiijjjkkkmmmnnnllloooppp', null, '7', '25', '1', null, null), ('20', null, '0', '# 标题\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\naaaaaaaaaaaa\r\n\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n                     \r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', '2016-03-28 15:10:43', null, null, null, '0', '0', '2333', '上传文件测试....', null, '42', '25', '1', null, null), ('21', null, '1', '# 好用的App有很多\r\n----------\r\n\r\n## 子标题 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n![2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723](http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-04-3a0b4fc6-8173-4e5a-811c-197ef942f723)\r\n\r\n\r\n\r\n', '2016-04-04 23:42:06', null, null, null, '0', '0', '2333', '好用的App有很多....', null, '3', '26', '1', null, null), ('22', null, '0', '# 整风运动的风和雨\r\n----------\r\n\r\n## 整风运动的风和雨 ##\r\n\r\n```\r\n整风运动的风和雨\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n**打赏开发者: **\r\n\r\n![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)', '2016-04-06 02:27:55', null, null, null, '0', '0', '2333', '整风运动的风和雨', null, '1', '1', '1', 'undefined', 'undefined'), ('23', null, '0', '# 潜伏下的军统蛮有意思的\r\n----------\r\n新修改了图片和音频。。。\r\n再修改了图片和音频。。。\r\n\r\n## 潜伏下的军统蛮有意思的。。。。 ##\r\n\r\n```\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n这里填写文本内容...\r\n\r\n```\r\n\r\n\r\n----------\r\n\r\n\r\n[我的data首页](http://wodedata.com)\r\n\r\n', '2016-04-06 03:21:23', null, null, null, '0', '0', '2333', '潜伏下的军统蛮有意思的', null, '51', '2', '1', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-b344ac89-692b-46ef-9e0b-b1707c48725c', 'http://7xrzeb.com1.z0.glb.clouddn.com/2016-04-06-c8c269e5-253c-4e2e-8bbc-bb1815ca9779');
+INSERT INTO `topic` VALUES ('24', null, '0', '### 寂寞的宁都会议\r\n----------\r\n\r\n**宁都会议介绍** \r\n\r\n```\r\n　　1932年10月3日，在极其严峻的气氛中，苏区中央局会议在江西宁都小源召开。小源山林茂密，风景优美，有很多地主庄园，江西省军区司令部作战室为了防空，就驻扎在这里。作战室里的中央局会议，气氛十分凝重，随着批判加温，大家说话声一句比一句高，头发有些凌乱的毛泽东沉默不语，这一段时间经常低烧的他，一支接一支抽着烟，有时还不断咳嗽几声。周恩来解开上衣的扣子，不时地看看窗外，脸上显出不安的表情。\r\n\r\n　　在这次会议上，毛泽东被解除在红军中的领导职务。这不是孤立的、偶然的，围绕宁都会议和解除毛泽东军权，台前幕后发生了许多事情。\r\n\r\n```\r\n', '2016-04-10 05:02:11', null, null, null, '0', '0', '0', '寂寞的宁都会议', null, '9', '1', '4', 'http://7xrzeb.com1.z0.glb.clouddn.com/001.%E5%AF%82%E5%AF%9E%E7%9A%84%E5%AE%81%E9%83%BD%E4%BC%9A%E8%AE%AE.jpg', 'http://7xrzeb.com1.z0.glb.clouddn.com/001.%E5%AF%82%E5%AF%9E%E7%9A%84%E5%AE%81%E9%83%BD%E4%BC%9A%E8%AE%AE.mp3'), ('25', null, '0', '### 毛周之怨\r\n----------\r\n\r\n**既有不满，又无法分开** \r\n\r\n```\r\n　　“共生”可能是描述他们两人关系的最适当的词了。毛和周在工作作风和性格上很不相同，但两人在三十七年信任和互相依赖的基础上，相辅相成地进行着合作。他(周恩来)的无私的献身精神，使他成为毛的不可缺少的“另一个我”。\r\n\r\n　　这是两位领导中国人民深刻改变了中国社会面貌的伟人。他们的出身和文化性格相异，他们走上革命道路，选择终生信仰的过程也不尽相同。但他们都是二十世纪的文化精英和时代精神的体现者。他们并肩奋斗，相互辉映，一同走过了半个多世纪的艰难途程，为中国人民的解放和建设事业做出了划时代的贡献，带来深远的历史影响。\r\n\r\n```\r\n', '2016-04-10 05:15:41', null, null, null, '0', '0', '0', '毛周之怨', null, '15', '1', '4', 'http://7xrzeb.com1.z0.glb.clouddn.com/002.%E6%AF%9B%E5%91%A8%E4%B9%8B%E6%80%A8.jpg', 'http://7xrzeb.com1.z0.glb.clouddn.com/002.%E6%AF%9B%E5%91%A8%E4%B9%8B%E6%80%A8.mp3');
 COMMIT;
 
 -- ----------------------------
@@ -305,7 +305,7 @@ CREATE TABLE `user` (
 --  Records of `user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES ('1', 'http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata180x180.png', null, null, '2016-03-20 16:46:19', null, 'luowei@wodedata.com', null, null, null, 'luowei', '0', 'ab8bbd7e77282a0367ffbb1cd2603132', '0', 'admin', null, null, null, null, 'luowei'), ('2', 'http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata180x180.png', null, null, '2016-03-20 18:02:39', null, 'admin@wodedata.com', null, null, null, 'admin', '1', '6eb67c74e9cb2b80630e4ac10c4b4635', '0', 'admin', null, null, null, null, 'admin'), ('4', 'http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/lidongcheng180x180.png', null, null, '2016-04-09 01:11:19', null, 'lidongcheng@wodedata.com', null, null, null, 'lidongcheng', '2', '60d175585a4e8d1be572aa84a25aa22c', '0', 'editor', null, null, null, null, 'lidongcheng'), ('5', 'http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata180x180.png', null, null, '2016-04-09 02:59:04', null, 'abc123@wodedata.com', null, null, null, 'abc123', '3', '7ff2af0c05b01ec2456c6b143d48181a', '0', 'menber', null, null, null, null, 'abc123');
+INSERT INTO `user` VALUES ('1', 'http://7xrtnb.com1.z0.glb.clouddn.com/wodedata180x180.png', null, null, '2016-03-20 16:46:19', null, 'luowei@wodedata.com', null, null, null, 'luowei', '0', 'ab8bbd7e77282a0367ffbb1cd2603132', '0', 'admin', null, null, null, null, 'luowei'), ('2', 'http://7xrtnb.com1.z0.glb.clouddn.com/wodedata180x180.png', null, null, '2016-03-20 18:02:39', null, 'admin@wodedata.com', null, null, null, 'admin', '1', '6eb67c74e9cb2b80630e4ac10c4b4635', '0', 'admin', null, null, null, null, 'admin'), ('4', 'http://7xrtnb.com1.z0.glb.clouddn.com/lidongcheng180x180.png', null, null, '2016-04-09 01:11:19', null, 'lidongcheng@wodedata.com', null, null, null, 'lidongcheng', '2', '60d175585a4e8d1be572aa84a25aa22c', '0', 'editor', null, null, null, null, 'lidongcheng'), ('5', 'http://7xrtnb.com1.z0.glb.clouddn.com/wodedata180x180.png', null, null, '2016-04-09 02:59:04', null, 'abc123@wodedata.com', null, null, null, 'abc123', '3', '7ff2af0c05b01ec2456c6b143d48181a', '0', 'menber', null, null, null, null, 'abc123');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

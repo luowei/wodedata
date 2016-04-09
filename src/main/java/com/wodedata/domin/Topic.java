@@ -57,8 +57,8 @@ public class Topic implements java.io.Serializable {
 	private Set<Comment> comments = new HashSet<Comment>(0);
 	@JsonIgnore
 	private Set<Collection> collections = new HashSet<Collection>(0);
-	@JsonIgnore
-	private Set<UpFileInfo> upFileInfos = new HashSet<UpFileInfo>(0);
+//	@JsonIgnore
+//	private Set<UpFileInfo> upFileInfos = new HashSet<UpFileInfo>(0);
 
 	private String preImage;
 	private String preAudio;
@@ -270,14 +270,14 @@ public class Topic implements java.io.Serializable {
 		this.collections = collections;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
-	public Set<UpFileInfo> getUpFileInfos() {
-		return upFileInfos;
-	}
-
-	public void setUpFileInfos(Set<UpFileInfo> upFileInfos) {
-		this.upFileInfos = upFileInfos;
-	}
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
+//	public Set<UpFileInfo> getUpFileInfos() {
+//		return upFileInfos;
+//	}
+//
+//	public void setUpFileInfos(Set<UpFileInfo> upFileInfos) {
+//		this.upFileInfos = upFileInfos;
+//	}
 
 	@Column(name = "preImage")
 	public String getPreImage() {

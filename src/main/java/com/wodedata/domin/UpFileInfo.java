@@ -41,13 +41,14 @@ public class UpFileInfo {
 
     private Node node;
 
-    private Topic topic;
+//    private Topic topic;
 
     public UpFileInfo() {
     }
 
     public UpFileInfo(String name, String type, Integer size, String key, String url,
-                      String hash, Date createAt, Section section, Node node,Topic topic) {
+                      String hash, Date createAt, Section section, Node node) {
+                      //String hash, Date createAt, Section section, Node node,Topic topic) {
         this.name = name;
         this.type = type;
         this.size = size;
@@ -57,7 +58,7 @@ public class UpFileInfo {
         this.createAt = createAt;
         this.section = section;
         this.node = node;
-        this.topic = topic;
+//        this.topic = topic;
     }
 
     @Id
@@ -153,13 +154,13 @@ public class UpFileInfo {
         this.node = node;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="topic_id")
-    public Topic getTopic() {
-        return topic;
-    }
-
-    public void setTopic(Topic topic) {
-        this.topic = topic;
-    }
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="topic_id")
+//    public Topic getTopic() {
+//        return topic;
+//    }
+//
+//    public void setTopic(Topic topic) {
+//        this.topic = topic;
+//    }
 }

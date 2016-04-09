@@ -42,14 +42,17 @@
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th width="5%">#</th>
-													<th width="35%">标题</th>
-													<th width="10%">作者</th>
-													<th width="10%">创建时间</th>
-													<th width="10%">最后回复</th>
-													<th width="5%">浏览</th>
-													<th width="5%">回答</th>
-													<th width="10%">处理</th>
+													<th>#</th>
+													<th>标题</th>
+													<th>作者</th>
+													<th>专辑</th>
+													<th>预览图</th>
+													<th>音频</th>
+													<th>创建时间</th>
+													<th>最后回复</th>
+													<th>浏览</th>
+													<th>回答</th>
+													<th>处理</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -68,6 +71,19 @@
 													</td>
 													<td>
 														${fn:substring(topic.user.nick, 0, 100)}
+													</td>
+													<td>
+														${topic.node.name}
+													</td>
+													<td>
+														<a href="${topic.preImage}" class="thumbnail" target="_blank">
+															<img src="${topic.preImage}" style="width:40px;height:40px;">
+														</a>
+													</td>
+													<td>
+														<audio controls style="width: 100px;">
+															<source src="${topic.preAudio}">
+														</audio>
 													</td>
 													<td>
 														<fmt:formatDate value="${topic.createAt}" type="both"/>

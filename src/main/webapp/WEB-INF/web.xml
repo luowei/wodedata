@@ -22,6 +22,11 @@
 		<listener-class>com.wodedata.web.listener.SessionListener</listener-class>
 	</listener>
 
+	<!-- Session Configuration 默认永不超时-->
+	<session-config>
+		<session-timeout>-1</session-timeout>
+	</session-config>
+
 	<!-- Spring Servlet,由于把bean全部交给了SpringJap，所以Spring-mvc里面现在为空 -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>

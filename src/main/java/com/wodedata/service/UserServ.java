@@ -73,7 +73,7 @@ public class UserServ {
 		}
 		user.setNick(username);//默认的昵称就是用户名
 		user.setPassword(EncryptUtil.encryptUsernameAndPassword(username, password));
-		user.setAvatar("http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata180x180.png");
+		user.setAvatar("http://7xrtnb.com1.z0.glb.clouddn.com/wodedata180x180.png");
 		user.setRole(ROLE_MENBER);
 		user.setNumber(userRepo.count());
 		user.setCreateAt(new Date());

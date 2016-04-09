@@ -197,7 +197,7 @@
                                             <!-- This is used as the file preview template -->
                                             <div class="col-lg-2 text-center">
                                                 <span class="preview"><img
-                                                        src="http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata50x50.png"
+                                                        src="http://7xrtnb.com1.z0.glb.clouddn.com/wodedata50x50.png"
                                                         data-dz-thumbnail/></span>
                                             </div>
                                             <div class="col-lg-2 text-center">
