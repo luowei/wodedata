@@ -15,6 +15,7 @@ public class AdminInte implements HandlerInterceptor{
 			throws Exception {
 		User user=(User)request.getSession().getAttribute("user");
 		if(user==null){
+			response.sendRedirect(request.getContextPath());
 			return false;
 		}else{
 			return user.getRole().equals(UserServ.ROLE_ADMIIN);

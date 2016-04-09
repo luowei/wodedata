@@ -14,9 +14,5 @@
 
 ----------
 
+文本编写推荐使用markdown格式，这里提供一个好用的在线编辑工具:[stackedit](https://stackedit.io/)
 
-[我的data首页](http://wodedata.com)
-
-**打赏开发者: **
-
-![图片描述](http://7xrtnb.com1.z0.glb.clouddn.com/images%2Fme%2Fwechat_payme.jpg)

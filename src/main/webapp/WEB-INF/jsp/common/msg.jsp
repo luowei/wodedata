@@ -6,10 +6,21 @@
 			<strong>success!</strong> ${msg}
 		</div>
 	</c:if>
-	<c:if test="${not empty error }">
+
+	<c:if test="${not empty errMsg}">
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<div class="text-center">
+				<span class="label label-danger">${errMsg}</span>
+			</div>
+		</div>
+	</c:if>
+
+	<c:if test="${not empty error}">
 		<div class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<strong>error!</strong>
+			<span class="label label-danger">${errMsg}</span>
 			<c:choose>
 				<c:when test="${empty error.size() }">
 					${error}

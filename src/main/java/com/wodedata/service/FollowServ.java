@@ -79,6 +79,6 @@ public class FollowServ {
 	 */
 	public boolean isFollowing(User self,User other){
 		Follow follow=followReop.findOneByUserByFollowerIdAndUserByFollowingId(self, other);
-		return follow!=null?true:false;
+		return follow != null;
 	}
 }

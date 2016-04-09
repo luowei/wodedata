@@ -14,17 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import static com.qiniu.util.StringUtils.isNullOrEmpty;
 
 @Controller
+@SessionAttributes("user")
 @RequestMapping("/topics")
 public class TopicC {
 
@@ -97,7 +93,7 @@ public class TopicC {
                           RedirectAttributes attributes) {
         User user = (User) request.getSession().getAttribute("user");
         String contextPath = request.getContextPath();
-        if (result.hasErrors()) {
+        if (result.hasErrors() || user==null) {
             attributes.addFlashAttribute("error", result.getAllErrors());
             return "redirect:/topics/" + topicId;
         } else {
@@ -114,7 +110,12 @@ public class TopicC {
      * @return
      */
     @RequestMapping("/create")
-    public String newPage(Model model) {
+    public String newPage(Model model,User user,String errMsg,RedirectAttributes redirectAttrs) {
+        if( user==null || "menber".equals(user.getRole()) || "".equals(user.getRole()) ){
+            errMsg = "您还不是专栏发布者,暂时不能发表新话题,请联第管理员qq: 745054025";
+            redirectAttrs.addFlashAttribute("errMsg",errMsg);
+            return "redirect:/";
+        }
         model.addAttribute("topicTemplate", ReadData.readTipsFromFile("TopicTemplate.md"));
         model.addAttribute("sections", sectionServ.getAll());
         return "/topics/create";
@@ -130,7 +131,7 @@ public class TopicC {
     public String save(@Validated Topic topic, String sectionId, String nodeId, Errors resutlt, RedirectAttributes redirectAttrs,
                        HttpServletRequest requset) {
         User user = (User) requset.getSession().getAttribute("user");
-        if (resutlt.hasErrors()) {
+        if (user==null || "menber".equals(user.getRole()) || "".equals(user.getRole()) ) {
             redirectAttrs.addFlashAttribute("error", resutlt.getAllErrors());
             redirectAttrs.addFlashAttribute("topic", topic);
             return "redirect:/topics/create";
@@ -142,19 +143,22 @@ public class TopicC {
 
             //保存图片文件信息
             UpFileInfo imageFile = uploadFileServ.findByUrl(topic.getPreImage());
-            imageFile.setSection(section);
-            imageFile.setNode(node);
-            imageFile.setTopic(newTopic);
-
-            uploadFileServ.saveFileInfo(imageFile);
+            if(imageFile!=null){
+                imageFile.setSection(section);
+                imageFile.setNode(node);
+                imageFile.setTopic(newTopic);
+                uploadFileServ.saveFileInfo(imageFile);
+            }
 
             //保存音频文件信息
             UpFileInfo audioFile = uploadFileServ.findByUrl(topic.getPreAudio());
-            audioFile.setSection(section);
-            audioFile.setNode(node);
-            audioFile.setTopic(newTopic);
+            if(audioFile!=null){
+                audioFile.setSection(section);
+                audioFile.setNode(node);
+                audioFile.setTopic(newTopic);
+                uploadFileServ.saveFileInfo(audioFile);
 
-            uploadFileServ.saveFileInfo(audioFile);
+            }
 
             return "redirect:/topics/" + newTopic.getId();
         }
@@ -168,7 +172,10 @@ public class TopicC {
      * @return
      */
     @RequestMapping("/{id}/edit")
-    public String edit(@PathVariable int id, Model model) {
+    public String edit(@PathVariable int id, Model model,User user) {
+        if( user==null || "menber".equals(user.getRole()) || "".equals(user.getRole()) ){
+            return "redirect:/";
+        }
         model.addAttribute("topic", topicServ.getOne(id));
         model.addAttribute("sections", sectionServ.getAll());
         return "/topics/edit";
@@ -182,8 +189,11 @@ public class TopicC {
     @RequestMapping("/update")
     public String update(@Validated @ModelAttribute Topic topic,
                          String sectionId, String nodeId, Errors error,
-                         Model model,
+                         Model model,User user,
                          RedirectAttributes attributes) {
+        if( user==null || "menber".equals(user.getRole()) || "".equals(user.getRole()) ){
+            return "redirect:/";
+        }
 
         if (error.hasErrors()) {
             model.addAttribute("error", error.getAllErrors());
@@ -240,7 +250,10 @@ public class TopicC {
 
     @RequestMapping("/{id}/delete")
     @ResponseBody
-    public boolean delete(@PathVariable("id") int id) {
+    public boolean delete(@PathVariable("id") int id,User user) {
+        if( user==null || "menber".equals(user.getRole()) || "".equals(user.getRole()) ){
+            return false;
+        }
         topicServ.softDelete(id);
         return true;
     }

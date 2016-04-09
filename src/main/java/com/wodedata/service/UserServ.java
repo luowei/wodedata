@@ -32,7 +32,7 @@ import com.wodedata.web.helper.Validator;
 public class UserServ {
 
 	public static final String ROLE_ADMIIN="admin";
-	
+	public static final String ROLE_EDITOR="editor";
 	public static final String ROLE_MENBER="menber";
 	
 	public static final String AVATAR="";
@@ -73,7 +73,8 @@ public class UserServ {
 		}
 		user.setNick(username);//默认的昵称就是用户名
 		user.setPassword(EncryptUtil.encryptUsernameAndPassword(username, password));
-		user.setAvatar("http://tp2.sinaimg.cn/3888714809/180/5727878850/1");
+		user.setAvatar("http://7xrtnb.com1.z0.glb.clouddn.com/images/logo/wodedata180x180.png");
+		user.setRole(ROLE_MENBER);
 		user.setNumber(userRepo.count());
 		user.setCreateAt(new Date());
 		return userRepo.save(user);

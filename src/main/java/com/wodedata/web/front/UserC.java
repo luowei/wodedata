@@ -136,7 +136,7 @@ public class UserC {
 			HttpServletRequest request){
 		User self=(User)request.getSession().getAttribute("user");
 		User other=userServ.getByUserId(id);
-		return followServ.isFollowing(self, other)==true?1:0;
+		return followServ.isFollowing(self, other) ?1:0;
 	}
 	
 	/**

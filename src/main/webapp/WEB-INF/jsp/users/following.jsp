@@ -13,7 +13,7 @@
 </ol>
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
-						<li class=""><a href="${x}/users/${id}/topics">帖子</a></li>
+						<li class=""><a href="${x}/users/${id}/topics">话题列表</a></li>
 						<li class=""><a href="${x}/users/${id}/comments">回复</a></li>
 						<li class=""><a href="${x}/users/${id}/collections">收藏</a></li>
 						<li class="active"><a href="${x}/users/${id}/following">追随着</a>

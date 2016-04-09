@@ -4,15 +4,12 @@
 <div class="container-fluid">
 	${p.nav_footer.content}
 	<div class="row">
-		<div class="col-md-4">
-		♡ luowei.github.com
+		<div class="col-md-12 text-center">
+		♡ ldcs.wodedata.com &nbsp;&nbsp;&nbsp;&nbsp;Copyright @ ldcs.wodedata.com
 		</div>
-		<div class="col-md-4 text-center">
-			Copyright @ wodedata.com
-		</div>
-		<div class="col-md-4 text-right">
-		从接收HTTP请求到渲染完成视图耗时<b><%=System.currentTimeMillis()-(Long)request.getAttribute("startTime") %></b>ms
-		</div>
+		<%--<div class="col-md-4 text-right">--%>
+		<%--从接收HTTP请求到渲染完成视图耗时<b><%=System.currentTimeMillis()-(Long)request.getAttribute("startTime") %></b>ms--%>
+		<%--</div>--%>
 	</div>
 	${p.footer_script.content}
 </div>

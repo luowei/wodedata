@@ -9,13 +9,13 @@
 		<li class="list-group-item"><i class="fa  fa-envelope"></i> 邮箱: 
 		<span>******</span>
 		</li>
-		<li class="list-group-item"><i class="fa  fa-github"></i> 代码: 
-		<a href="${user.github}"><span>${user.github}</span></a>
-		</li>
+		<%--<li class="list-group-item"><i class="fa  fa-github"></i> 代码: --%>
+		<%--<a href="${user.github}"><span>${user.github}</span></a>--%>
+		<%--</li>--%>
 		<li class="list-group-item"><i class="fa fa-paper-plane"></i> 主页:
 		<a href="${user.homePage}"><span>${user.homePage}</span></a>
 		</li>
-		<li class="list-group-item"><i class="fa  fa-twitter"></i> 推特: 
+		<li class="list-group-item"><i class="fa  fa-twitter"></i> 微博:
 		<a href="${user.twitter}"><span>${user.twitter}</span></a></li>
 		<li class="list-group-item"><i class="fa  fa-info-circle fa-lg"></i> 自描:
 		<p>${user.description}</p></li>

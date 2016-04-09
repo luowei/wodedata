@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import com.wodedata.domin.User;
 import com.wodedata.repository.SectionRepo;
 import com.wodedata.service.NodeServ;
 import com.wodedata.service.TopicServ;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeC {
@@ -37,8 +40,8 @@ public class HomeC {
 	 * @return
 	 */
 	@RequestMapping("/")
-	public String index(@RequestParam(defaultValue = "1", value = "p") int p, 
-			Model model) {
+	public String index(@RequestParam(defaultValue = "1", value = "p") int p,
+						Model model) {
 		Page<Topic> topicPage=topicServ.getAllFilteByStatusOrderByDefault(p);
 		List<Topic> topics=topicPage.getContent();
 		model.addAttribute("topics",topics);
