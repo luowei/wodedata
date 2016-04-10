@@ -3,6 +3,17 @@
          pageEncoding="UTF-8" %>
 <body>
 <%@ include file="/WEB-INF/jsp/common/nav.jsp" %>
+
+<style type="text/css">
+    .img-center {
+        display: table-cell;
+        vertical-align: middle;
+        margin: auto;
+    }
+
+</style>
+
+
 <div class="main-container container">
     <%@ include file="/WEB-INF/jsp/common/msg.jsp" %>
     <div class="modal  fade" id="modal-delete" tabindex="-1"
@@ -59,8 +70,8 @@
                     <ul class="list-group">
                         <c:if test="${not empty topic.preImage}">
                             <li class="list-group-item">
-                                <div id="topic-preImage">
-                                    <img class="img-responsive img-rounded" src="${topic.preImage}"/>
+                                <div id="topic-preImage" class="text-center">
+                                    <img class="img-responsive img-rounded img-center" src="${topic.preImage}"/>
                                 </div>
                             </li>
                         </c:if>
