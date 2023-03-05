@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+    xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/" 
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
+    xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/">
+
+    <channel>
+        <title>Whaddya Know Joe?</title>
+        <atom:link href="http://0.0.0.0:4000/feed/podcast" rel="self" type="application/rss+xml" />
+        <link>http://0.0.0.0:4000</link>
+        <description>Productivity stories from the trenches. What works and what I'll never do again. Hosted by Joe Buhlig.</description>
+        <lastBuildDate>Wed, 01 Mar 2023 08:37:30 -0600</lastBuildDate>
+        <language>en-US</language>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        <generator>http://jekyllrb.com</generator>
+        <itunes:summary>Joe Buhlig walks you through real life story and then breaks down the productivity tools and techniques used. It's a great way to learn how to implement the tips and tricks that you see across the web. Productivity stories from the trenches. What works and what to never try.</itunes:summary>
+        <itunes:author>Joe Buhlig</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://0.0.0.0:4000/assets/base/Whaddya-Know-Joe-Album-Art.png" />
+        <itunes:owner>
+            <itunes:name>Joe Buhlig</itunes:name>
+            <itunes:email>email@example.com</itunes:email>
+        </itunes:owner>
+        <managingEditor>email@example.com (Joe Buhlig)</managingEditor>
+        <itunes:subtitle>Productivity stories from the trenches. What works and what I'll never do again. Hosted by Joe Buhlig.</itunes:subtitle>
+        <image>
+            <title>Whaddya Know Joe?</title>
+            <url>http://0.0.0.0:4000/assets/base/Whaddya-Know-Joe-Album-Art.png</url>
+            <link>http://0.0.0.0:4000</link>
+        </image>
+        <itunes:category text="Technology">
+            <itunes:category text="Software How-To" />
+            <itunes:category text="Gadgets" />
+        </itunes:category>
+
+    </channel>
+</rss>

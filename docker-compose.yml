@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  web:
+    build: .
+    command: jekyll serve --drafts --future --force_polling 
+    # image: jekyll/jekyll:3.8
+    image: myjekyll:v1.0  # 指定(生成的)镜像名
+    container_name: my-jekyll # 指定(生成的)容器名
+    volumes:
+      - .:/srv/jekyll
+      - ./vendor/bundle:/usr/local/bundle
+    ports:
+      - 4000:4000
+    networks:
+      - jekyll_network
+
+# 引用已存在的网络  
+networks:
+  jekyll_network:
+    external:
+        name: network_mynginx
