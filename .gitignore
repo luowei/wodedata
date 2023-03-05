@@ -1,4 +1,5 @@
 *.md
 *.MD
 *.markdown
-
+docker-compose.yml
+Dockerfile
