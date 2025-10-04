@@ -35,6 +35,8 @@ local.properties
 .settings/
 .loadpath
 
+.claude/
+
 # External tool builders
 .externalToolBuilders/
 
